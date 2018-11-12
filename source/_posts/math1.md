@@ -2,11 +2,11 @@
 title: 证明（0，1）是不可列集
 date: 2018-10-14 16:13:40
 mathjax: true
-tags:
+tags: [Math, 泛函分析]
 ---
 
 
-考虑区间 $(0,1\]$, 若$|(0,1]| = \aleph$, 则存在一一满映射$f: \mathbb{N} \rightarrow (0,1\]$. 每个$f(n)$ 可唯一的表示为十进制小数:
+考虑区间 $(0,1\]$, 若$|(0,1]| = \aleph$ (集合的势是可列集), 则存在一一满映射$f: \mathbb{N} \rightarrow (0,1\]$. 每个$f(n)$ 可唯一的表示为十进制小数:
 
 \begin{equation}
 f(n)=0.a_{n_1} a_{n_2} \cdots a_{n_k} \cdots, n=1,2,\cdots.
