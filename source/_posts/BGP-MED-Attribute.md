@@ -19,7 +19,7 @@ MED (Multi Exit Discriminator, 多出口鉴别器)提供了一种动态的方法
 
 当一个BGP speaker从一个对等体学习到路由的时候，这个路由的MED会传递到其他内部BGP(iBGP)对等体，但不会传递到外部BGP(eBGP)对等体。
 
-{% assert_img 112965-bgpmed-attr-01.gif 112965-bgpmed-attr-01 %}
+{% asset_img 112965-bgpmed-attr-01.gif 112965-bgpmed-attr-01 %}
 
 Router 1
 
@@ -85,13 +85,13 @@ Router 3
 
 R2的输入如下图
 
-{% assert_img 112965-bgpmed-attr-02.gif 112965-bgpmed-attr-02 %}
+{% asset_img 112965-bgpmed-attr-02.gif 112965-bgpmed-attr-02 %}
 
 R2和R3之间运行eBGP，当同样的更新到达另一个AS时，这个Metric归零，`show ip bgp`检查R3可以看出它的Metric是0
 
 R3的输出如下图
 
-{% assert_img 112965-bgpmed-attr-03.gif 112965-bgpmed-attr-03 %}
+{% asset_img 112965-bgpmed-attr-03.gif 112965-bgpmed-attr-03 %}
 
 从这一场景中可以明显看出MED属性可以影响邻居AS进来的流量，但不会影响其他AS。当一个BGP speaker从一个对等体学习到路由的时候，他可以将这条路由的MED传递到任何iBGP对等体，但不会是eBGP对等体。结果就是，MED只能影响邻居AS。
 
@@ -99,7 +99,7 @@ R3的输出如下图
 
 当注入BGP的路由(通过使用`network`或`redistribute`命令)来自于其他IGP(RIP、EIGRP、OSFPF)，这里MED来自于IGP metric并且带有这个MED的路由被宣告到eBGP邻居。
 
-{% assert_img 112965-bgpmed-attr-04.gif 112965-bgpmed-attr-04 %}
+{% asset_img 112965-bgpmed-attr-04.gif 112965-bgpmed-attr-04 %}
 
 Router R1
 
@@ -164,12 +164,12 @@ Router R3
 
 R2的输出如下
 
-{% assert_img 112965-bgpmed-attr-05.gif 112965-bgpmed-attr-05 %}
+{% asset_img 112965-bgpmed-attr-05.gif 112965-bgpmed-attr-05 %}
 
 However, in R3 which runs on eBGP, the network is advertised by considering the MED value derived from the IGP. In this case it is RIP. The prefix 10.0.0.0 is advertised with the IGP MED value, which is RIP's metric 1.
 
 R3的输出如下
 
-{% assert_img 112965-bgpmed-attr-06.gif 112965-bgpmed-attr-06 %}
+{% asset_img 112965-bgpmed-attr-06.gif 112965-bgpmed-attr-06 %}
 
 From this scenario the behavior of the MED, in the case of networks being injected to the BGP router via the `network` or `redistribute` command, is clearly seen where the actual MED value is being replaced with that of the IGP metric. Now, given that this attribute is a hint to external neighbors about the path preference into an AS. As stated earlier, it is not always considered if there are other more important attributes to determine the best route. In order to have the same effect with a more deterministic attribute, use the set as-path prepend command under the route map. If you prepend the AS path for certain routes, it will continue to be seen by other AS. For more information on the usage of As-path prepend, refer to [Use of Set-aspath prepend Command](https://www.cisco.com/en/US/tech/tk365/technologies_tech_note09186a00800c95bb.shtml#neighborsroutemaps).
