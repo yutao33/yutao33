@@ -1,6 +1,6 @@
 ---
 title: VMware虚拟机启动实际硬盘分区的Ubuntu, EFI+GPT
-date: 2018-10-14 16:13:40
+date: 2018-12-14 17:36:40
 mathjax: true
 tags: [VMware, 虚拟机]
 ---
