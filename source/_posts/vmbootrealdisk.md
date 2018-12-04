@@ -15,6 +15,8 @@ fdisk /dev/sdb
 
 # 建立ESP分区(类型1) 和Linux分区
 # AAAABBBB是原来系统里fstab里挂载EFI分区使用的UUID，形如AAAA-BBBB
+# 如果UUID不对，会导致A start job is running for dev-disk-by x2duuid-ad0b043b\x2d404c… .device (7s / 1min 30s)之类的错误。
+
 mkfs.msdos -F 32 -i AAAABBBB /dev/sda1
 
 msfs.ext4 /dev/sda2
