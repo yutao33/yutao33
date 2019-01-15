@@ -19,6 +19,6 @@ single-tape Turing machine $M = \left(Q, \Gamma, q_{0}, \sqcup, F, \delta \right
 
 Initially the tape has the input string on it, followed by an infinite number of blank symbols ($\sqcup$), and the head is at the left end of the tape. At each step we use the transition function to determine the next state, the symbol written on the tape just prior to moving, and the direction to move the head, left (L) or right (R). If we ever reach a final state, the machine halts.
 
-{% include_code TuringMachine lang:c /TuringMachineCImpl.c %}
+{% include_code TuringMachine lang:c TuringMachineCImpl.c %}
 
 
