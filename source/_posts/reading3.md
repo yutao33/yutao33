@@ -8,7 +8,7 @@ tags: [Reading, Plan]
 
 |start | end  |
 |----  | -----|
-|10:05 |      |
+|10:05 | 17:22|
 
 > TensorFlow: Large-Scale Machine Learning on Heterogeneous Distributed Systems
 
@@ -131,5 +131,4 @@ A Container is the mechanism within TensorFlow for managing longer-lived mutable
 
 --------
 
-{% iframe https://player.bilibili.com/player.html?aid=3905462&cid=6319180&page=1 [640] [430] %}
-
+{% iframe https://player.bilibili.com/player.html?aid=48373839&cid=84726739&page=1 640 430 %}

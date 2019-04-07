@@ -115,5 +115,5 @@ The VL2 directory provides three key functions: (1) lookups and (2) updates for 
 
 --------
 
-{% iframe https://player.bilibili.com/player.html?aid=3905462&cid=6319180&page=1 [640] [430] %}
+{% iframe https://player.bilibili.com/player.html?aid=3905462&cid=6319180&page=1 640 430 %}
 

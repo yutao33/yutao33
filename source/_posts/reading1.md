@@ -70,7 +70,7 @@ Domino’s syntax (Figure 4) is similar to C, but with several constraints (Tabl
 --------------
 
 
-{% iframe https://player.bilibili.com/player.html?aid=43426592&cid=76113255&page=1 [640] [430] %}
+{% iframe https://player.bilibili.com/player.html?aid=43426592&cid=76113255&page=1 640 430 %}
 
 
 
