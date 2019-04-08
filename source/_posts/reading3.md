@@ -131,4 +131,6 @@ A Container is the mechanism within TensorFlow for managing longer-lived mutable
 
 --------
 
-{% iframe https://player.bilibili.com/player.html?aid=48373839&cid=84726739&page=1 640 430 %}
+{% raw %}
+<iframe src="//player.bilibili.com/player.html?aid=48373839&cid=84726739&page=1" scrolling="no" border="0" frameborder="no" framespacing="0" allowfullscreen="true"> </iframe>
+{% endraw %}
