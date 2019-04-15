@@ -81,3 +81,22 @@ deploy:
   type: git
   repository: git@github.com:yutao33/yutao33.github.io.git
   branch: master
+  
+live2d:
+  enable: true
+  scriptFrom: local
+  pluginRootPath: live2dw/
+  pluginJsPath: lib/
+  pluginModelPath: assets/
+  tagMode: false
+  debug: false
+  model:
+    use: xiaoban
+  display:
+    position: left
+    width: 180
+    height: 300
+  mobile:
+    show: true
+  react:
+    opacity: 0.9
