@@ -8,7 +8,7 @@ tags: [Reading, Plan]
 
 |start | end  |
 |----  | -----|
-|15:13 | |
+|15:13 |  -   |
 
 > Onix: A Distributed Control Platform for Large-scale Production Networks
 

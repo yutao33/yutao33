@@ -8,7 +8,7 @@ tags: [Reading, Plan]
 
 |start | end  |
 |----  | -----|
-|14:41 | |
+|14:41 |  -   |
 
 > In Search of an Understandable Consensus Algorithm (Raft)
 

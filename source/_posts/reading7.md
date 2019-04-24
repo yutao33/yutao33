@@ -8,7 +8,7 @@ tags: [Reading, Plan]
 
 |start | end  |
 |----  | -----|
-|15:50 | |
+|15:50 |  -   |
 
 > A General Approach to Network Configuration Verification
 

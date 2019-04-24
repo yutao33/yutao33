@@ -8,7 +8,7 @@ tags: [Reading, Plan]
 
 |start | end  |
 |----  | -----|
-|14:15 | |
+|14:15 |  -   |
 
 > p4v: Practical Verification for Programmable Data Planes
 
@@ -118,11 +118,20 @@ the highlevel idea is as follows: we instrument the program with ghost variables
 - Verification conditions
 - Counter-example generation
 
+# CASE STUDIES
+
+- Header validity for switch.p4
+- NetCache parser roundtripping
+- NetPaxos bug
+- Enabling compiler optimizations
+
+# EVALUATION
+
 
 
 --------
 
 {% raw %}
-
+<iframe src="//player.bilibili.com/player.html?aid=49803272&cid=87197612&page=1" scrolling="no" border="0" frameborder="no" framespacing="0" allowfullscreen="true"> </iframe>
 {% endraw %}
 
