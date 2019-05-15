@@ -1,5 +1,5 @@
 ---
-title: 100天阅读计划 -- Day 6
+title: 100天阅读计划 -- 6
 date: 2019-04-16 15:13:00
 mathjax: true
 tags: [Reading, Plan]

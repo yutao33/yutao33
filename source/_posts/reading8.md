@@ -1,5 +1,5 @@
 ---
-title: 100天阅读计划 -- Day 8
+title: 100天阅读计划 -- 8
 date: 2019-04-23 14:15:00
 mathjax: true
 tags: [Reading, Plan]

@@ -1,5 +1,5 @@
 ---
-title: 100天阅读计划 -- Day 9
+title: 100天阅读计划 -- 9
 date: 2019-04-24 14:15:00
 mathjax: true
 tags: [Reading, Plan]

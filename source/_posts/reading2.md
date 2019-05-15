@@ -1,5 +1,5 @@
 ---
-title: 100天阅读计划 -- Day 2
+title: 100天阅读计划 -- 2
 date: 2019-04-05 14:17:00
 mathjax: true
 tags: [Reading, Plan]
