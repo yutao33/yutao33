@@ -1,0 +1,874 @@
+<!DOCTYPE html>
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+<html class="theme-next pisces use-motion" lang="en">
+<head><meta name="generator" content="Hexo 3.8.0">
+  <meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform">
+<meta http-equiv="Cache-Control" content="no-siteapp">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css">
+
+<link href="/css/main.css?v=6.4.2" rel="stylesheet" type="text/css">
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=6.4.2">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=6.4.2">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=6.4.2">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=6.4.2" color="#222">
+
+
+
+
+
+
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Pisces',
+    version: '6.4.2',
+    sidebar: {"position":"left","display":"post","offset":12,"b2t":false,"scrollpercent":false,"onmobile":false},
+    fancybox: false,
+    fastclick: false,
+    lazyload: false,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+  
+
+
+
+
+  <meta name="description" content="本文参考 http://network-101.blogspot.com/2011/01/bgp-community-attribute.html BGP社区是BGP路由协议的一个可选属性，可以认为它是一个IGP的tag，表示一个IP地址集合。社区标签常用来维护路由、设置一个IP集合的BGP属性。社区属性设置后，可以被路由映射函数(route-map function)改变。默认情况下，社区标签是">
+<meta name="keywords" content="BGP">
+<meta property="og:type" content="article">
+<meta property="og:title" content="BGP Community attributes">
+<meta property="og:url" content="https://yutao33.github.io/2018/11/15/BGP-Community-attribute/index.html">
+<meta property="og:site_name" content="Github Pages of D. HT. Y.">
+<meta property="og:description" content="本文参考 http://network-101.blogspot.com/2011/01/bgp-community-attribute.html BGP社区是BGP路由协议的一个可选属性，可以认为它是一个IGP的tag，表示一个IP地址集合。社区标签常用来维护路由、设置一个IP集合的BGP属性。社区属性设置后，可以被路由映射函数(route-map function)改变。默认情况下，社区标签是">
+<meta property="og:locale" content="en">
+<meta property="og:image" content="https://yutao33.github.io/2018/11/15/BGP-Community-attribute/BGP-Community-attribute.jpg">
+<meta property="og:updated_time" content="2018-11-15T09:25:54.133Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="BGP Community attributes">
+<meta name="twitter:description" content="本文参考 http://network-101.blogspot.com/2011/01/bgp-community-attribute.html BGP社区是BGP路由协议的一个可选属性，可以认为它是一个IGP的tag，表示一个IP地址集合。社区标签常用来维护路由、设置一个IP集合的BGP属性。社区属性设置后，可以被路由映射函数(route-map function)改变。默认情况下，社区标签是">
+<meta name="twitter:image" content="https://yutao33.github.io/2018/11/15/BGP-Community-attribute/BGP-Community-attribute.jpg">
+
+
+
+
+
+
+  <link rel="canonical" href="https://yutao33.github.io/2018/11/15/BGP-Community-attribute/">
+
+
+
+<script type="text/javascript" id="page.configurations">
+  CONFIG.page = {
+    sidebar: "",
+  };
+</script>
+
+  <title>BGP Community attributes | Github Pages of D. HT. Y.</title>
+  
+
+
+
+
+
+
+
+
+
+  <noscript>
+  <style type="text/css">
+    .use-motion .motion-element,
+    .use-motion .brand,
+    .use-motion .menu-item,
+    .sidebar-inner,
+    .use-motion .post-block,
+    .use-motion .pagination,
+    .use-motion .comments,
+    .use-motion .post-header,
+    .use-motion .post-body,
+    .use-motion .collection-title { opacity: initial; }
+
+    .use-motion .logo,
+    .use-motion .site-title,
+    .use-motion .site-subtitle {
+      opacity: initial;
+      top: initial;
+    }
+
+    .use-motion {
+      .logo-line-before i { left: initial; }
+      .logo-line-after i { right: initial; }
+    }
+  </style>
+</noscript>
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="en">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/" class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">Github Pages of D. HT. Y.</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+    
+  </div>
+
+  <div class="site-nav-toggle">
+    <button aria-label="Toggle navigation bar">
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+
+
+<nav class="site-nav">
+  
+    <ul id="menu" class="menu">
+      
+        
+        
+        
+          
+          <li class="menu-item menu-item-home">
+    <a href="/" rel="section">
+      <i class="menu-item-icon fa fa-fw fa-home"></i> <br>Home</a>
+  </li>
+        
+        
+        
+          
+          <li class="menu-item menu-item-archives">
+    <a href="/archives/" rel="section">
+      <i class="menu-item-icon fa fa-fw fa-archive"></i> <br>Archives</a>
+  </li>
+
+      
+      
+    </ul>
+  
+
+  
+
+  
+</nav>
+
+
+
+  
+
+
+
+</div>
+    </header>
+
+    
+
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          
+            
+
+          
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="https://yutao33.github.io/2018/11/15/BGP-Community-attribute/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="D. HT. Y.">
+      <meta itemprop="description" content>
+      <meta itemprop="image" content="https://avatars2.githubusercontent.com/u/22347608?s=460&v=4">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Github Pages of D. HT. Y.">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h2 class="post-title" itemprop="name headline">BGP Community attributes
+              
+            
+          </h2>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+
+            
+            
+            
+
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+
+              
+                
+              
+
+              <time title="Created: 2018-11-15 16:31:40 / Modified: 17:25:54" itemprop="dateCreated datePublished" datetime="2018-11-15T16:31:40+08:00">2018-11-15</time>
+            
+
+            
+              
+
+              
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <p>本文参考 <a href="http://network-101.blogspot.com/2011/01/bgp-community-attribute.html" target="_blank" rel="noopener">http://network-101.blogspot.com/2011/01/bgp-community-attribute.html</a></p>
+<p>BGP社区是BGP路由协议的一个可选属性，可以认为它是一个IGP的tag，表示一个IP地址集合。社区标签常用来维护路由、设置一个IP集合的BGP属性。社区属性设置后，可以被路由映射函数(route-map function)改变。默认情况下，社区标签是一个十进制数，但是我们可以通过<code>ip bgp-community new-format</code>使用新的格式(AA:NN)，AA是自治系统号，NN是ASN设置的值。</p>
+<p>有三个特殊的社区属性值。命令名称和功能如下表所示</p>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Value</th>
+<th>Meaning</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>NO_EXPORT</td>
+<td>FFFF:FF01</td>
+<td>Do not advertise outside this AS. It can be advertised to other confederation autonomous systems.</td>
+</tr>
+<tr>
+<td>NO_ADVERT</td>
+<td>FFFF:FF02</td>
+<td>Do not advertise to any other peer.</td>
+</tr>
+<tr>
+<td>LOCAL_AS</td>
+<td>FFFF:FF03</td>
+<td>Do not advertise outside the local confederation sub-AS.</td>
+</tr>
+</tbody>
+</table>
+<p>要设置BGP社区属性，可以在<code>route-map</code>命令中使用<code>set community &lt;number&gt;/&lt;special community string&gt;</code>，或者可以使用<code>ip community-list &lt;community string&gt; permit/deny &lt;ACL number&gt;</code>。</p>
+<p>下面是一个配置BGP社区属性的例子，我们不讨论一个十进制的社区属性，因为它和IGP tag 起相同的作用。在这个例子里, R1,R2和R3在AS 100里，R4在 AS 200里。 OSPF在R1,R2和R3之间运行。下面是这个例子的配置要求。</p>
+<ul>
+<li>在R1和R4之间建立eBPG连接</li>
+<li>在R1、R2和R3之间使用路由反射器建立iBGP连接</li>
+<li>R3使用图中的社区属性在BGP里宣告loopback网络</li>
+<li>验证R2、R1和R4上的路由和社区属性</li>
+</ul>
+<img src="/2018/11/15/BGP-Community-attribute/BGP-Community-attribute.jpg" title="Example">
+<p>在这个例子里，我们期望</p>
+<ul>
+<li>R2不会有<code>150.150.150.0/24</code>子网的信息（R1不会向它的peers宣告路由）</li>
+<li><code>100.100.100.0/24</code>不会向AS 100之外宣告路由</li>
+<li><code>200.200.200.0/24</code>正常宣告</li>
+</ul>
+<h3 id="设置R3"><a href="#设置R3" class="headerlink" title="设置R3"></a>设置R3</h3><p>配置R3用图中的社区属性宣告它的loopback网络</p>
+<h3 id="对每个loopback接口设置access-list"><a href="#对每个loopback接口设置access-list" class="headerlink" title="对每个loopback接口设置access-list"></a>对每个loopback接口设置access-list</h3><figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">ip access-list standard only-100</span><br><span class="line"> permit 100.100.0.0 0.0.255.255</span><br><span class="line"></span><br><span class="line">ip access-list standard only-150</span><br><span class="line"> permit 150.150.0.0 0.0.255.255</span><br><span class="line"></span><br><span class="line">ip access-list standard only-200</span><br><span class="line"> permit 200.200.0.0 0.0.255.255</span><br></pre></td></tr></table></figure>
+<h3 id="对路由映射-route-map-设置access-list-根据图中配置设置社区属性"><a href="#对路由映射-route-map-设置access-list-根据图中配置设置社区属性" class="headerlink" title="对路由映射(route-map)设置access-list, 根据图中配置设置社区属性"></a>对路由映射(route-map)设置access-list, 根据图中配置设置社区属性</h3><figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">route-map communityset permit 10</span><br><span class="line"> match ip address only-100</span><br><span class="line"> <span class="built_in">set</span> community no-export</span><br><span class="line">!</span><br><span class="line">route-map communityset permit 20</span><br><span class="line"> match ip address only-150</span><br><span class="line"> <span class="built_in">set</span> community no-advertise</span><br><span class="line">!</span><br><span class="line">route-map communityset permit 30</span><br><span class="line"> <span class="built_in">set</span> community none</span><br></pre></td></tr></table></figure>
+<h3 id="对BGP会话设置”communityset”策略"><a href="#对BGP会话设置”communityset”策略" class="headerlink" title="对BGP会话设置”communityset”策略"></a>对BGP会话设置”communityset”策略</h3><figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">router bgp 100</span><br><span class="line"> no synchronization</span><br><span class="line"> bgp <span class="built_in">log</span>-neighbor-changes</span><br><span class="line"> network 100.100.100.0 mask 255.255.255.0</span><br><span class="line"> network 150.150.150.0 mask 255.255.255.0</span><br><span class="line"> network 200.200.200.0</span><br><span class="line"> neighbor 1.1.1.1 remote-as 100</span><br><span class="line"> neighbor 1.1.1.1 update-source Loopback0</span><br><span class="line"> neighbor 1.1.1.1 send-community both</span><br><span class="line"> neighbor 1.1.1.1 route-map communityset out</span><br><span class="line"> no auto-summary</span><br></pre></td></tr></table></figure>
+<p>注意:</p>
+<ol>
+<li><code>neighbor send community</code>需要应用到邻居以发送社区属性</li>
+<li>对邻居应用路由映射(route-map)</li>
+</ol>
+<h3 id="R1社区属性验证"><a href="#R1社区属性验证" class="headerlink" title="R1社区属性验证"></a>R1社区属性验证</h3><figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line">R1<span class="comment">#sh ip bgp 100.100.100.0</span></span><br><span class="line">BGP routing table entry <span class="keyword">for</span> 100.100.100.0/24, version 24</span><br><span class="line">Paths: (1 available, best <span class="comment">#1, table Default-IP-Routing-Table, not advertised to EBGP peer)</span></span><br><span class="line">  Advertised to update-groups:</span><br><span class="line">        2</span><br><span class="line">  Local, (Received from a RR-client)</span><br><span class="line">    3.3.3.3 (metric 21) from 3.3.3.3 (3.3.3.3)</span><br><span class="line">      Origin IGP, metric 0, localpref 100, valid, internal, best</span><br><span class="line">      Community: no-export</span><br><span class="line">R1<span class="comment">#</span></span><br><span class="line">R1<span class="comment">#sh ip bgp 150.150.150.0</span></span><br><span class="line">BGP routing table entry <span class="keyword">for</span> 150.150.150.0/24, version 25</span><br><span class="line">Paths: (1 available, best <span class="comment">#1, table Default-IP-Routing-Table, not advertised to any peer)</span></span><br><span class="line">  Not advertised to any peer</span><br><span class="line">  Local, (Received from a RR-client)</span><br><span class="line">    3.3.3.3 (metric 21) from 3.3.3.3 (3.3.3.3)</span><br><span class="line">      Origin IGP, metric 0, localpref 100, valid, internal, best</span><br><span class="line">      Community: no-advertise</span><br><span class="line">R1<span class="comment">#</span></span><br></pre></td></tr></table></figure>
+<h3 id="路由表验证"><a href="#路由表验证" class="headerlink" title="路由表验证"></a>路由表验证</h3><h4 id="1-R2的路由表里没有150-150-150-0-24"><a href="#1-R2的路由表里没有150-150-150-0-24" class="headerlink" title="1) R2的路由表里没有150.150.150.0/24"></a>1) R2的路由表里没有<code>150.150.150.0/24</code></h4><figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line">R2 Routing table </span><br><span class="line"></span><br><span class="line">B    200.200.200.0/24 [200/0] via 3.3.3.3, 16:28:17</span><br><span class="line">     1.0.0.0/32 is subnetted, 1 subnets</span><br><span class="line">O       1.1.1.1 [110/11] via 192.168.1.1, 16:54:32, FastEthernet0/0</span><br><span class="line">     2.0.0.0/32 is subnetted, 1 subnets</span><br><span class="line">C       2.2.2.2 is directly connected, Loopback0</span><br><span class="line">     100.0.0.0/24 is subnetted, 1 subnets</span><br><span class="line">B       100.100.100.0 [200/0] via 3.3.3.3, 16:52:28</span><br><span class="line">     3.0.0.0/32 is subnetted, 1 subnets</span><br><span class="line">O       3.3.3.3 [110/11] via 192.168.2.2, 16:53:54, FastEthernet0/1</span><br><span class="line">     10.0.0.0/24 is subnetted, 1 subnets</span><br><span class="line">O       10.1.1.0 [110/20] via 192.168.1.1, 16:54:32, FastEthernet0/0</span><br><span class="line">     123.0.0.0/24 is subnetted, 1 subnets</span><br><span class="line">B       123.1.1.0 [200/0] via 1.1.1.1, 16:49:44</span><br><span class="line">C    192.168.1.0/24 is directly connected, FastEthernet0/0</span><br><span class="line">C    192.168.2.0/24 is directly connected, FastEthernet0/1</span><br><span class="line">R2<span class="comment">#</span></span><br></pre></td></tr></table></figure>
+<h4 id="2-R4路由表里没有100-100-100-0-24"><a href="#2-R4路由表里没有100-100-100-0-24" class="headerlink" title="2) R4路由表里没有100.100.100.0/24"></a>2) R4路由表里没有<code>100.100.100.0/24</code></h4><figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line">Codes: C - connected, S - static, R - RIP, M - mobile, B - BGP</span><br><span class="line">       D - EIGRP, EX - EIGRP external, O - OSPF, IA - OSPF inter area</span><br><span class="line">       N1 - OSPF NSSA external <span class="built_in">type</span> 1, N2 - OSPF NSSA external <span class="built_in">type</span> 2</span><br><span class="line">       E1 - OSPF external <span class="built_in">type</span> 1, E2 - OSPF external <span class="built_in">type</span> 2</span><br><span class="line">       i - IS-IS, su - IS-IS summary, L1 - IS-IS level-1, L2 - IS-IS level-2</span><br><span class="line">       ia - IS-IS inter area, * - candidate default, U - per-user static route</span><br><span class="line">       o - ODR, P - periodic downloaded static route</span><br><span class="line"></span><br><span class="line">Gateway of last resort is not <span class="built_in">set</span></span><br><span class="line"></span><br><span class="line">B    200.200.200.0/24 [20/0] via 10.1.1.1, 16:30:36</span><br><span class="line">     10.0.0.0/24 is subnetted, 1 subnets</span><br><span class="line">C       10.1.1.0 is directly connected, FastEthernet0/0</span><br><span class="line">     123.0.0.0/24 is subnetted, 1 subnets</span><br><span class="line">C       123.1.1.0 is directly connected, Loopback0</span><br><span class="line">R4<span class="comment">#</span></span><br></pre></td></tr></table></figure>
+<h3 id="R1的路由表"><a href="#R1的路由表" class="headerlink" title="R1的路由表"></a>R1的路由表</h3><p>Gateway of last resort is not set.</p>
+<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line">B    200.200.200.0/24 [200/0] via 3.3.3.3, 16:31:09</span><br><span class="line">     1.0.0.0/24 is subnetted, 1 subnets</span><br><span class="line">C       1.1.1.0 is directly connected, Loopback0</span><br><span class="line">     2.0.0.0/32 is subnetted, 1 subnets</span><br><span class="line">O       2.2.2.2 [110/11] via 192.168.1.2, 16:57:33, FastEthernet0/1</span><br><span class="line">     100.0.0.0/24 is subnetted, 1 subnets</span><br><span class="line">B       100.100.100.0 [200/0] via 3.3.3.3, 16:39:33</span><br><span class="line">     3.0.0.0/32 is subnetted, 1 subnets</span><br><span class="line">O       3.3.3.3 [110/21] via 192.168.1.2, 16:55:43, FastEthernet0/1</span><br><span class="line">     10.0.0.0/24 is subnetted, 1 subnets</span><br><span class="line">C       10.1.1.0 is directly connected, FastEthernet0/0</span><br><span class="line">     123.0.0.0/24 is subnetted, 1 subnets</span><br><span class="line">B       123.1.1.0 [20/0] via 10.1.1.2, 16:52:35</span><br><span class="line">C    192.168.1.0/24 is directly connected, FastEthernet0/1</span><br><span class="line">O    192.168.2.0/24 [110/20] via 192.168.1.2, 16:56:55, FastEthernet0/1</span><br><span class="line">     150.150.0.0/24 is subnetted, 1 subnets</span><br><span class="line">B       150.150.150.0 [200/0] via 3.3.3.3, 16:35:24</span><br><span class="line">R1<span class="comment">#</span></span><br></pre></td></tr></table></figure>
+      
+    </div>
+
+    
+
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/BGP/" rel="tag"># BGP</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2018/11/12/openflow/" rel="next" title="OpenFlow命令示例">
+                <i class="fa fa-chevron-left"></i> OpenFlow命令示例
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2018/11/17/BGP-Convergence/" rel="prev" title="理解BGP收敛">
+                理解BGP收敛 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+  </div>
+
+
+          </div>
+          
+
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            Table of Contents
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            Overview
+          </li>
+        </ul>
+      
+
+      <section class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <img class="site-author-image" itemprop="image" src="https://avatars2.githubusercontent.com/u/22347608?s=460&v=4" alt="D. HT. Y.">
+            
+              <p class="site-author-name" itemprop="name">D. HT. Y.</p>
+              <p class="site-description motion-element" itemprop="description"></p>
+          </div>
+
+          
+            <nav class="site-state motion-element">
+              
+                <div class="site-state-item site-state-posts">
+                
+                  <a href="/archives/">
+                
+                    <span class="site-state-item-count">29</span>
+                    <span class="site-state-item-name">posts</span>
+                  </a>
+                </div>
+              
+
+              
+
+              
+                
+                
+                <div class="site-state-item site-state-tags">
+                  
+                    
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                    <span class="site-state-item-count">26</span>
+                    <span class="site-state-item-name">tags</span>
+                  
+                </div>
+              
+            </nav>
+          
+
+          
+
+          
+
+          
+          
+
+          
+          
+
+          
+            
+          
+          
+
+        </div>
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#设置R3"><span class="nav-number">1.</span> <span class="nav-text">设置R3</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#对每个loopback接口设置access-list"><span class="nav-number">2.</span> <span class="nav-text">对每个loopback接口设置access-list</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#对路由映射-route-map-设置access-list-根据图中配置设置社区属性"><span class="nav-number">3.</span> <span class="nav-text">对路由映射(route-map)设置access-list, 根据图中配置设置社区属性</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#对BGP会话设置”communityset”策略"><span class="nav-number">4.</span> <span class="nav-text">对BGP会话设置”communityset”策略</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#R1社区属性验证"><span class="nav-number">5.</span> <span class="nav-text">R1社区属性验证</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#路由表验证"><span class="nav-number">6.</span> <span class="nav-text">路由表验证</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#1-R2的路由表里没有150-150-150-0-24"><span class="nav-number">6.1.</span> <span class="nav-text">1) R2的路由表里没有150.150.150.0/24</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#2-R4路由表里没有100-100-100-0-24"><span class="nav-number">6.2.</span> <span class="nav-text">2) R4路由表里没有100.100.100.0/24</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#R1的路由表"><span class="nav-number">7.</span> <span class="nav-text">R1的路由表</span></a></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; <span itemprop="copyrightYear">2019</span>
+  <span class="with-love" id="animate">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">D. HT. Y.</span>
+
+  
+
+  
+</div>
+
+
+  
+
+
+
+  <div class="powered-by">Powered by <a class="theme-link" target="_blank" rel="external nofollow" href="https://hexo.io">Hexo</a> v3.8.0</div>
+
+
+
+  <span class="post-meta-divider">|</span>
+
+
+
+  <div class="theme-info">Theme – <a class="theme-link" target="_blank" rel="external nofollow" href="https://theme-next.org">NexT.Pisces</a> v6.4.2</div>
+
+
+
+
+        
+
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+    
+	
+    
+
+    
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=6.4.2"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=6.4.2"></script>
+
+
+
+  
+  
+
+
+  <script type="text/javascript" src="/js/src/affix.js?v=6.4.2"></script>
+
+  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=6.4.2"></script>
+
+
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=6.4.2"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=6.4.2"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=6.4.2"></script>
+
+
+
+  
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+  
+
+  
+  
+
+  
+    
+      <script type="text/x-mathjax-config">
+    MathJax.Hub.Config({
+      tex2jax: {
+        inlineMath: [ ['$','$'], ["\\(","\\)"]  ],
+        processEscapes: true,
+        skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+      },
+      TeX: {equationNumbers: { autoNumber: "AMS" }}
+    });
+</script>
+
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Queue(function() {
+      var all = MathJax.Hub.getAllJax(), i;
+        for (i=0; i < all.length; i += 1) {
+          all[i].SourceElement().parentNode.className += ' has-jax';
+        }
+    });
+</script>
+<script type="text/javascript" src="//cdn.jsdelivr.net/npm/mathjax@2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+
+    
+  
+
+
+  
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+<script src="/live2dw/lib/L2Dwidget.min.js?094cbace49a39548bed64abff5988b05"></script><script>L2Dwidget.init({"pluginRootPath":"live2dw/","pluginJsPath":"lib/","pluginModelPath":"assets/","tagMode":false,"debug":false,"model":{"jsonPath":"/live2dw/assets/xiaoban.model.json"},"display":{"position":"left","width":180,"height":300},"mobile":{"show":true},"react":{"opacity":0.9},"log":false});</script></body>
+</html>

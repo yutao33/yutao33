@@ -1,0 +1,925 @@
+<!DOCTYPE html>
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+<html class="theme-next pisces use-motion" lang="en">
+<head><meta name="generator" content="Hexo 3.8.0">
+  <meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform">
+<meta http-equiv="Cache-Control" content="no-siteapp">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css">
+
+<link href="/css/main.css?v=6.4.2" rel="stylesheet" type="text/css">
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=6.4.2">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=6.4.2">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=6.4.2">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=6.4.2" color="#222">
+
+
+
+
+
+
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Pisces',
+    version: '6.4.2',
+    sidebar: {"position":"left","display":"post","offset":12,"b2t":false,"scrollpercent":false,"onmobile":false},
+    fancybox: false,
+    fastclick: false,
+    lazyload: false,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+  
+
+
+
+
+  <meta name="description" content="start end     14:17 1 day delay     VL2: A Scalable and Flexible Data Center Network  Abstracta practical network architecture that scales to support huge data centers with uniform high capacity be">
+<meta name="keywords" content="Reading,Plan">
+<meta property="og:type" content="article">
+<meta property="og:title" content="100天阅读计划 -- 2">
+<meta property="og:url" content="https://yutao33.github.io/2019/04/05/reading2/index.html">
+<meta property="og:site_name" content="Github Pages of D. HT. Y.">
+<meta property="og:description" content="start end     14:17 1 day delay     VL2: A Scalable and Flexible Data Center Network  Abstracta practical network architecture that scales to support huge data centers with uniform high capacity be">
+<meta property="og:locale" content="en">
+<meta property="og:updated_time" content="2019-05-15T02:51:32.919Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="100天阅读计划 -- 2">
+<meta name="twitter:description" content="start end     14:17 1 day delay     VL2: A Scalable and Flexible Data Center Network  Abstracta practical network architecture that scales to support huge data centers with uniform high capacity be">
+
+
+
+
+
+
+  <link rel="canonical" href="https://yutao33.github.io/2019/04/05/reading2/">
+
+
+
+<script type="text/javascript" id="page.configurations">
+  CONFIG.page = {
+    sidebar: "",
+  };
+</script>
+
+  <title>100天阅读计划 -- 2 | Github Pages of D. HT. Y.</title>
+  
+
+
+
+
+
+
+
+
+
+  <noscript>
+  <style type="text/css">
+    .use-motion .motion-element,
+    .use-motion .brand,
+    .use-motion .menu-item,
+    .sidebar-inner,
+    .use-motion .post-block,
+    .use-motion .pagination,
+    .use-motion .comments,
+    .use-motion .post-header,
+    .use-motion .post-body,
+    .use-motion .collection-title { opacity: initial; }
+
+    .use-motion .logo,
+    .use-motion .site-title,
+    .use-motion .site-subtitle {
+      opacity: initial;
+      top: initial;
+    }
+
+    .use-motion {
+      .logo-line-before i { left: initial; }
+      .logo-line-after i { right: initial; }
+    }
+  </style>
+</noscript>
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="en">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/" class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">Github Pages of D. HT. Y.</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+    
+  </div>
+
+  <div class="site-nav-toggle">
+    <button aria-label="Toggle navigation bar">
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+
+
+<nav class="site-nav">
+  
+    <ul id="menu" class="menu">
+      
+        
+        
+        
+          
+          <li class="menu-item menu-item-home">
+    <a href="/" rel="section">
+      <i class="menu-item-icon fa fa-fw fa-home"></i> <br>Home</a>
+  </li>
+        
+        
+        
+          
+          <li class="menu-item menu-item-archives">
+    <a href="/archives/" rel="section">
+      <i class="menu-item-icon fa fa-fw fa-archive"></i> <br>Archives</a>
+  </li>
+
+      
+      
+    </ul>
+  
+
+  
+
+  
+</nav>
+
+
+
+  
+
+
+
+</div>
+    </header>
+
+    
+
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          
+            
+
+          
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="https://yutao33.github.io/2019/04/05/reading2/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="D. HT. Y.">
+      <meta itemprop="description" content>
+      <meta itemprop="image" content="https://avatars2.githubusercontent.com/u/22347608?s=460&v=4">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Github Pages of D. HT. Y.">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h2 class="post-title" itemprop="name headline">100天阅读计划 -- 2
+              
+            
+          </h2>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+
+            
+            
+            
+
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+
+              
+                
+              
+
+              <time title="Created: 2019-04-05 14:17:00" itemprop="dateCreated datePublished" datetime="2019-04-05T14:17:00+08:00">2019-04-05</time>
+            
+
+            
+              
+
+              
+                
+                <span class="post-meta-divider">|</span>
+                
+
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">Edited on</span>
+                
+                <time title="Modified: 2019-05-15 10:51:32" itemprop="dateModified" datetime="2019-05-15T10:51:32+08:00">2019-05-15</time>
+              
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <table>
+<thead>
+<tr>
+<th>start</th>
+<th>end</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>14:17</td>
+<td>1 day delay</td>
+</tr>
+</tbody>
+</table>
+<blockquote>
+<p>VL2: A Scalable and Flexible Data Center Network</p>
+</blockquote>
+<h1 id="Abstract"><a href="#Abstract" class="headerlink" title="Abstract"></a>Abstract</h1><p>a practical network architecture that scales to support huge data centers with uniform high capacity between servers, performance isolation between services, and Ethernet layer-2 semantics.</p>
+<ul>
+<li>flat addressing</li>
+<li>Valiant Load Balancing</li>
+<li>end-system based address resolution to scale to large server pools</li>
+</ul>
+<h1 id="INTRODUCTION"><a href="#INTRODUCTION" class="headerlink" title="INTRODUCTION"></a>INTRODUCTION</h1><p>data centers mush achieve high utilization, and key to this is the property of agility – the capacity to assign any server to any service.</p>
+<p>three objectives.</p>
+<ul>
+<li>Uniform high capacity</li>
+<li>Performance isolation</li>
+<li>Layer-2 semantics</li>
+</ul>
+<p>VL2 consists of a network built from low-cost switch ASICs arranged into a Clos topology [7] that provides extensive path diversity between servers. Our measurements show data centers have tremendous volatility in their workload, their traffic, and their failure patterns. To cope with this volatility, we adopt Valiant Load Balancing (VLB) [18, 23] to spread traffic across all available paths without any centralized coordination or traffic engineering.</p>
+<p>When a server sends a packet, the shim-layer on the server invokes a directory systemto learn the actual location of the destination and then tunnels the original packet there. the shim-layer also helps eliminate the scalability problems created by ARP in layer-2 networks, and the tunneling improves our ability to implement VLB. these aspects of the design enable VL2 to provide layer-2 semantics, while eliminating the fragmentation and waste of server pool capacity that the binding between addresses and locations causes in the existing architecture.</p>
+<p>contributions:</p>
+<ul>
+<li>find there is tremendous volatility in the traffic</li>
+<li>design, build, and deploy VL2</li>
+<li>apply Valiant Load Balancing in a new context, the inter-switch fabric of a data center</li>
+<li>justify the design trade-offs</li>
+</ul>
+<h1 id="BACKGROUND"><a href="#BACKGROUND" class="headerlink" title="BACKGROUND"></a>BACKGROUND</h1><p>to isolate different services or logical server groups (e.g., email, search, web front ends, web back ends), servers are partitioned into virtual LANs (VLANs). Unfortunately, this conventional design suffer from three fundamental limitations:</p>
+<ul>
+<li>Limited server-to-server capacity</li>
+<li>Fragmentation of resources</li>
+<li>Poor reliability and utilization</li>
+</ul>
+<h1 id="MEASUREMENTS-amp-IMPLICATIONS"><a href="#MEASUREMENTS-amp-IMPLICATIONS" class="headerlink" title="MEASUREMENTS &amp; IMPLICATIONS"></a>MEASUREMENTS &amp; IMPLICATIONS</h1><p>developing the mechanisms on which to build the network requires a quantitative understanding of the traffic matrix (who sends how much data to whom and when?) and churn (how o ften does the state of the network change due to changes in demand or switch/link failures and recoveries, etc.?).</p>
+<ul>
+<li>Data-Center Traffic Analysis<ul>
+<li>Analysis of Netflow and SNMP data</li>
+</ul>
+</li>
+<li>Flow Distribution Analysis<ul>
+<li>Distribution of flow sizes</li>
+<li>Number of Concurrent Flows</li>
+</ul>
+</li>
+<li>Traffic Matrix Analysis<ul>
+<li>Poor summarizability of traffic patterns</li>
+<li>Instability of traffic patterns</li>
+</ul>
+</li>
+<li>Failure Characteristics</li>
+</ul>
+
+
+
+<h1 id="VIRTUAL-LAYER-TWO-NETWORKING"><a href="#VIRTUAL-LAYER-TWO-NETWORKING" class="headerlink" title="VIRTUAL LAYER TWO NETWORKING"></a>VIRTUAL LAYER TWO NETWORKING</h1><p>briefly discuss our design principles and preview how they will be used in the VL2 design</p>
+<ul>
+<li>Randomizing to Cope with Volatility  (VLB)</li>
+<li>Building on proven networking technology</li>
+<li>Separating names from locators</li>
+<li>Embracing End Systems</li>
+</ul>
+<h2 id="Scale-out-Topologies"><a href="#Scale-out-Topologies" class="headerlink" title="Scale-out Topologies"></a>Scale-out Topologies</h2><h2 id="VL2-Addressing-and-Routing"><a href="#VL2-Addressing-and-Routing" class="headerlink" title="VL2 Addressing and Routing"></a>VL2 Addressing and Routing</h2><h3 id="Address-resolution-and-packet-forwarding"><a href="#Address-resolution-and-packet-forwarding" class="headerlink" title="Address resolution and packet forwarding"></a>Address resolution and packet forwarding</h3>
+<ul>
+<li>The network infrastructure operates using location-specic IP addresses (LAs); all switches and interfaces are assigned LAs, and switches run an IP-based (layer-3) link-state routing protocol that disseminates only these LAs. This allows switches to obtain the complete switch-level topology, as well as forward packets encapsulated with LAs along shortest paths. </li>
+<li>applications use application-specic IP addresses (AAs), which remain unaltered no matter how servers’ locations change due to virtual-machine migration or re-provisioning. Each AA (server) is associated with an LA, the identier of the ToR switch to which the server is connected. </li>
+<li>The VL2 directory system stores the mapping of AAs to LAs, and this mapping is created when application servers are provisioned to a service and assigned AA addresses.</li>
+</ul>
+<h3 id="Random-traffic-spreading-over-multiple-paths"><a href="#Random-traffic-spreading-over-multiple-paths" class="headerlink" title="Random traffic spreading over multiple paths"></a>Random traffic spreading over multiple paths</h3><p>Figure 6 illustrates how the VL2 agent uses encapsulation to implement VLB by sending traffic through a randomly-chosen Intermediate switch. The packet is first delivered to one of the Intermediate switches, decapsulated by the switch, delivered to the ToR’s LA, decapsulated again, and finally sent to the destination.</p>
+<h3 id="Backwards-Compatibility"><a href="#Backwards-Compatibility" class="headerlink" title="Backwards Compatibility"></a>Backwards Compatibility</h3><ul>
+<li>Interaction with hosts in the Internet</li>
+<li>Handling Broadcast</li>
+</ul>
+<h2 id="Maintaing-Host-Information-using-the-VL2-Directory-System"><a href="#Maintaing-Host-Information-using-the-VL2-Directory-System" class="headerlink" title="Maintaing Host Information using the VL2 Directory System"></a>Maintaing Host Information using the VL2 Directory System</h2><p>The VL2 directory provides three key functions: (1) lookups and (2) updates for AA-to-LA mappings; and (3) a reactive cache update mechanism so that latency-sensitive updates (e.g., updating the AA to LA mapping for a virtual machine undergoing live migration) happen quickly.</p>
+<h1 id="EVALUATION"><a href="#EVALUATION" class="headerlink" title="EVALUATION"></a>EVALUATION</h1><ul>
+<li>VL2 Provides Uniform High Capacity</li>
+<li>VL2 Provides VLB Fairness</li>
+<li>VL2 Provides Performance Isolation</li>
+<li>VL2 Convergence After Link Failures</li>
+<li>Directory-system performance</li>
+</ul>
+<hr>
+
+<iframe src="//player.bilibili.com/player.html?aid=3905462&cid=6319180&page=1" scrolling="no" border="0" frameborder="no" framespacing="0" allowfullscreen="true"> </iframe>
+
+
+      
+    </div>
+
+    
+
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/Reading/" rel="tag"># Reading</a>
+          
+            <a href="/tags/Plan/" rel="tag"># Plan</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2019/04/04/reading1/" rel="next" title="100天阅读计划 -- 1">
+                <i class="fa fa-chevron-left"></i> 100天阅读计划 -- 1
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2019/04/07/reading3/" rel="prev" title="100天阅读计划 -- 3">
+                100天阅读计划 -- 3 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+  </div>
+
+
+          </div>
+          
+
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            Table of Contents
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            Overview
+          </li>
+        </ul>
+      
+
+      <section class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <img class="site-author-image" itemprop="image" src="https://avatars2.githubusercontent.com/u/22347608?s=460&v=4" alt="D. HT. Y.">
+            
+              <p class="site-author-name" itemprop="name">D. HT. Y.</p>
+              <p class="site-description motion-element" itemprop="description"></p>
+          </div>
+
+          
+            <nav class="site-state motion-element">
+              
+                <div class="site-state-item site-state-posts">
+                
+                  <a href="/archives/">
+                
+                    <span class="site-state-item-count">29</span>
+                    <span class="site-state-item-name">posts</span>
+                  </a>
+                </div>
+              
+
+              
+
+              
+                
+                
+                <div class="site-state-item site-state-tags">
+                  
+                    
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                    <span class="site-state-item-count">26</span>
+                    <span class="site-state-item-name">tags</span>
+                  
+                </div>
+              
+            </nav>
+          
+
+          
+
+          
+
+          
+          
+
+          
+          
+
+          
+            
+          
+          
+
+        </div>
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#Abstract"><span class="nav-number">1.</span> <span class="nav-text">Abstract</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#INTRODUCTION"><span class="nav-number">2.</span> <span class="nav-text">INTRODUCTION</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#BACKGROUND"><span class="nav-number">3.</span> <span class="nav-text">BACKGROUND</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#MEASUREMENTS-amp-IMPLICATIONS"><span class="nav-number">4.</span> <span class="nav-text">MEASUREMENTS &amp; IMPLICATIONS</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#VIRTUAL-LAYER-TWO-NETWORKING"><span class="nav-number">5.</span> <span class="nav-text">VIRTUAL LAYER TWO NETWORKING</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#Scale-out-Topologies"><span class="nav-number">5.1.</span> <span class="nav-text">Scale-out Topologies</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#VL2-Addressing-and-Routing"><span class="nav-number">5.2.</span> <span class="nav-text">VL2 Addressing and Routing</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Address-resolution-and-packet-forwarding"><span class="nav-number">5.2.1.</span> <span class="nav-text">Address resolution and packet forwarding</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Random-traffic-spreading-over-multiple-paths"><span class="nav-number">5.2.2.</span> <span class="nav-text">Random traffic spreading over multiple paths</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Backwards-Compatibility"><span class="nav-number">5.2.3.</span> <span class="nav-text">Backwards Compatibility</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Maintaing-Host-Information-using-the-VL2-Directory-System"><span class="nav-number">5.3.</span> <span class="nav-text">Maintaing Host Information using the VL2 Directory System</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#EVALUATION"><span class="nav-number">6.</span> <span class="nav-text">EVALUATION</span></a></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; <span itemprop="copyrightYear">2019</span>
+  <span class="with-love" id="animate">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">D. HT. Y.</span>
+
+  
+
+  
+</div>
+
+
+  
+
+
+
+  <div class="powered-by">Powered by <a class="theme-link" target="_blank" rel="external nofollow" href="https://hexo.io">Hexo</a> v3.8.0</div>
+
+
+
+  <span class="post-meta-divider">|</span>
+
+
+
+  <div class="theme-info">Theme – <a class="theme-link" target="_blank" rel="external nofollow" href="https://theme-next.org">NexT.Pisces</a> v6.4.2</div>
+
+
+
+
+        
+
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+    
+	
+    
+
+    
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=6.4.2"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=6.4.2"></script>
+
+
+
+  
+  
+
+
+  <script type="text/javascript" src="/js/src/affix.js?v=6.4.2"></script>
+
+  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=6.4.2"></script>
+
+
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=6.4.2"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=6.4.2"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=6.4.2"></script>
+
+
+
+  
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+  
+
+  
+  
+
+  
+    
+      <script type="text/x-mathjax-config">
+    MathJax.Hub.Config({
+      tex2jax: {
+        inlineMath: [ ['$','$'], ["\\(","\\)"]  ],
+        processEscapes: true,
+        skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+      },
+      TeX: {equationNumbers: { autoNumber: "AMS" }}
+    });
+</script>
+
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Queue(function() {
+      var all = MathJax.Hub.getAllJax(), i;
+        for (i=0; i < all.length; i += 1) {
+          all[i].SourceElement().parentNode.className += ' has-jax';
+        }
+    });
+</script>
+<script type="text/javascript" src="//cdn.jsdelivr.net/npm/mathjax@2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+
+    
+  
+
+
+  
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+<script src="/live2dw/lib/L2Dwidget.min.js?094cbace49a39548bed64abff5988b05"></script><script>L2Dwidget.init({"pluginRootPath":"live2dw/","pluginJsPath":"lib/","pluginModelPath":"assets/","tagMode":false,"debug":false,"model":{"jsonPath":"/live2dw/assets/xiaoban.model.json"},"display":{"position":"left","width":180,"height":300},"mobile":{"show":true},"react":{"opacity":0.9},"log":false});</script></body>
+</html>

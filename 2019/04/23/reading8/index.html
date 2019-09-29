@@ -1,0 +1,954 @@
+<!DOCTYPE html>
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+<html class="theme-next pisces use-motion" lang="en">
+<head><meta name="generator" content="Hexo 3.8.0">
+  <meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform">
+<meta http-equiv="Cache-Control" content="no-siteapp">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css">
+
+<link href="/css/main.css?v=6.4.2" rel="stylesheet" type="text/css">
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=6.4.2">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=6.4.2">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=6.4.2">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=6.4.2" color="#222">
+
+
+
+
+
+
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Pisces',
+    version: '6.4.2',
+    sidebar: {"position":"left","display":"post","offset":12,"b2t":false,"scrollpercent":false,"onmobile":false},
+    fancybox: false,
+    fastclick: false,
+    lazyload: false,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+  
+
+
+
+
+  <meta name="description" content="start end     14:15 -     p4v: Practical Verification for Programmable Data Planes  ABSTRACTa practical tool for verifying data planes described using the P4 programming language  a novel mechanism">
+<meta name="keywords" content="Reading,Plan">
+<meta property="og:type" content="article">
+<meta property="og:title" content="100天阅读计划 -- 8">
+<meta property="og:url" content="https://yutao33.github.io/2019/04/23/reading8/index.html">
+<meta property="og:site_name" content="Github Pages of D. HT. Y.">
+<meta property="og:description" content="start end     14:15 -     p4v: Practical Verification for Programmable Data Planes  ABSTRACTa practical tool for verifying data planes described using the P4 programming language  a novel mechanism">
+<meta property="og:locale" content="en">
+<meta property="og:image" content="https://yutao33.github.io/2019/04/23/reading8/3_1.png">
+<meta property="og:image" content="https://yutao33.github.io/2019/04/23/reading8/3_2.png">
+<meta property="og:image" content="https://yutao33.github.io/2019/04/23/reading8/3_3.png">
+<meta property="og:image" content="https://yutao33.github.io/2019/04/23/reading8/4_1.png">
+<meta property="og:image" content="https://yutao33.github.io/2019/04/23/reading8/4_2.png">
+<meta property="og:image" content="https://yutao33.github.io/2019/04/23/reading8/5_1.png">
+<meta property="og:image" content="https://yutao33.github.io/2019/04/23/reading8/6_1.png">
+<meta property="og:updated_time" content="2019-05-15T02:51:32.920Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="100天阅读计划 -- 8">
+<meta name="twitter:description" content="start end     14:15 -     p4v: Practical Verification for Programmable Data Planes  ABSTRACTa practical tool for verifying data planes described using the P4 programming language  a novel mechanism">
+<meta name="twitter:image" content="https://yutao33.github.io/2019/04/23/reading8/3_1.png">
+
+
+
+
+
+
+  <link rel="canonical" href="https://yutao33.github.io/2019/04/23/reading8/">
+
+
+
+<script type="text/javascript" id="page.configurations">
+  CONFIG.page = {
+    sidebar: "",
+  };
+</script>
+
+  <title>100天阅读计划 -- 8 | Github Pages of D. HT. Y.</title>
+  
+
+
+
+
+
+
+
+
+
+  <noscript>
+  <style type="text/css">
+    .use-motion .motion-element,
+    .use-motion .brand,
+    .use-motion .menu-item,
+    .sidebar-inner,
+    .use-motion .post-block,
+    .use-motion .pagination,
+    .use-motion .comments,
+    .use-motion .post-header,
+    .use-motion .post-body,
+    .use-motion .collection-title { opacity: initial; }
+
+    .use-motion .logo,
+    .use-motion .site-title,
+    .use-motion .site-subtitle {
+      opacity: initial;
+      top: initial;
+    }
+
+    .use-motion {
+      .logo-line-before i { left: initial; }
+      .logo-line-after i { right: initial; }
+    }
+  </style>
+</noscript>
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="en">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/" class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">Github Pages of D. HT. Y.</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+    
+  </div>
+
+  <div class="site-nav-toggle">
+    <button aria-label="Toggle navigation bar">
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+
+
+<nav class="site-nav">
+  
+    <ul id="menu" class="menu">
+      
+        
+        
+        
+          
+          <li class="menu-item menu-item-home">
+    <a href="/" rel="section">
+      <i class="menu-item-icon fa fa-fw fa-home"></i> <br>Home</a>
+  </li>
+        
+        
+        
+          
+          <li class="menu-item menu-item-archives">
+    <a href="/archives/" rel="section">
+      <i class="menu-item-icon fa fa-fw fa-archive"></i> <br>Archives</a>
+  </li>
+
+      
+      
+    </ul>
+  
+
+  
+
+  
+</nav>
+
+
+
+  
+
+
+
+</div>
+    </header>
+
+    
+
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          
+            
+
+          
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="https://yutao33.github.io/2019/04/23/reading8/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="D. HT. Y.">
+      <meta itemprop="description" content>
+      <meta itemprop="image" content="https://avatars2.githubusercontent.com/u/22347608?s=460&v=4">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Github Pages of D. HT. Y.">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h2 class="post-title" itemprop="name headline">100天阅读计划 -- 8
+              
+            
+          </h2>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+
+            
+            
+            
+
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+
+              
+                
+              
+
+              <time title="Created: 2019-04-23 14:15:00" itemprop="dateCreated datePublished" datetime="2019-04-23T14:15:00+08:00">2019-04-23</time>
+            
+
+            
+              
+
+              
+                
+                <span class="post-meta-divider">|</span>
+                
+
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">Edited on</span>
+                
+                <time title="Modified: 2019-05-15 10:51:32" itemprop="dateModified" datetime="2019-05-15T10:51:32+08:00">2019-05-15</time>
+              
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <table>
+<thead>
+<tr>
+<th>start</th>
+<th>end</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>14:15</td>
+<td>-</td>
+</tr>
+</tbody>
+</table>
+<blockquote>
+<p>p4v: Practical Verification for Programmable Data Planes</p>
+</blockquote>
+<h1 id="ABSTRACT"><a href="#ABSTRACT" class="headerlink" title="ABSTRACT"></a>ABSTRACT</h1><p>a practical tool for verifying data planes described using the P4 programming language</p>
+<ul>
+<li>a novel mechanism for incorporating assumptions about the control plane</li>
+<li>domain-specific optimizations which are needed to scale to large programs</li>
+</ul>
+<p>with just a few hundred lines of control-plane annotations, p4v is able to verify critical safety properties for <code>switch.p4</code></p>
+<h1 id="INTRODUCTION"><a href="#INTRODUCTION" class="headerlink" title="INTRODUCTION"></a>INTRODUCTION</h1><ul>
+<li>Our vision of verified data planes is inspired in part by recent successes in the formal methods community</li>
+<li>SAT and SMT solvers, which underpin many automated tools, have become very fast in recent years and are now able to scale to extremely large problem instances in many common cases</li>
+</ul>
+<p>Challenges:</p>
+<ul>
+<li>One issue is that a P4 program is really only half of a program. The contents of the match-action tables are not known until they are populated by the control plane at run time</li>
+<li>Another challenge concerns scalability. Although P4 programs are limited to simple data structures and control flow, practical programs can be quite large, often running to tens of thousands of lines of code</li>
+</ul>
+<h1 id="BACKGROUND-ON-P4"><a href="#BACKGROUND-ON-P4" class="headerlink" title="BACKGROUND ON P4"></a>BACKGROUND ON P4</h1><ul>
+<li>headers</li>
+<li>parsers</li>
+<li>tables</li>
+<li>actions</li>
+<li>controls</li>
+</ul>
+<h1 id="DATA-PLANE-PROPERTIES"><a href="#DATA-PLANE-PROPERTIES" class="headerlink" title="DATA-PLANE PROPERTIES"></a>DATA-PLANE PROPERTIES</h1><ul>
+<li>General safety properties.<ul>
+<li>reading invalid headers</li>
+<li>ensuring that header stacks are only ever accessed within statically declared bounds, </li>
+<li>that arithmetic operations do not overflow, </li>
+<li>and that the compiler-generated deparser emits all headers that are valid at the end of the egress pipeline.</li>
+<li><img src="/2019/04/23/reading8/3_1.png" title="3_1"></li>
+</ul>
+</li>
+<li>Architectural properties<ul>
+<li>it is easy to make mistakes such as specifying conflicting forwarding operations (e.g., drop and multicast), </li>
+<li>specifying operations that are unimplementable (e.g., recirculating the packet an excessive number of times), </li>
+<li>or forgetting to make a forwarding decision at all, letting the target decide what to do with the packet.</li>
+<li><img src="/2019/04/23/reading8/3_2.png" title="3_2"></li>
+</ul>
+</li>
+<li>Program-specific properties<ul>
+<li>For example, the designer of a switch might want to check that broadcast traffic is handled correctly, </li>
+<li>while the designer of a router might want to check that the IPv4 ttl field is correctly decremented on every packet. </li>
+<li>Or, in the firewall example, as discussed previously, we might want to prove that a given internal server is isolated from the rest of the network.</li>
+<li><img src="/2019/04/23/reading8/3_3.png" title="3_3">
+</li>
+</ul>
+</li>
+</ul>
+<h1 id="VERIFICATION-METHODOLOGY"><a href="#VERIFICATION-METHODOLOGY" class="headerlink" title="VERIFICATION METHODOLOGY"></a>VERIFICATION METHODOLOGY</h1><ol>
+<li>we first build a first-order formula that captures the execution of the program in logic, leveraging the fact that P4 programs denote functions on finite sequences of bits (i.e., packets) parameterized on finite state (i.e., switch registers), </li>
+<li>and then use an automated theorem prover to check whether there exists an initial state that leads to a violation of one or more correctness properties.</li>
+</ol>
+<ul>
+<li>One of the key challenges we faced in building p4v is that the P4 language lacks a formal semantics</li>
+<li>To address this challenge, we defined a translation from P4 programs to Guarded Command Language (GCL), an imperative language with non-deterministic choice (see Figure 2) [11].</li>
+<li><img src="/2019/04/23/reading8/4_1.png" title="4_1"></li>
+<li>we translate each table application into a non-deterministic choice between the actions declared for the table and, if the table doesn’t declare a default action, a <code>no-op</code> action for when the table misses. For example, the translation of apply(acl) is the following:<br>  <code>assume(true) [] allow() [] deny()</code></li>
+<li>Figure 3 gives the formal definition of a function <code>wlp</code> (for weakest liberal preconditions [11]) that computes verification conditions for a GCL command c and postcondition Q, which is initially true. Most of the cases are intuitive:<ul>
+<li>assignment substitutes the expression for the variable in the postcondition,</li>
+<li>sequential composition threads the postcondition through c2 then c1, </li>
+<li>and non-deterministic choice computes the conjunction of the weakest preconditions for c1 and c2.</li>
+<li>The cases for assumptions and assertions handle annotations used in program-specific properties such as the firewall example. </li>
+<li>Assumptions produce an implication from the assumed formula to the postcondition, </li>
+<li>while assertions conjoin the asserted formula with the postcondition. </li>
+<li>The verification conditions for a P4 program <code>p</code> are given by <code>wlp(c, true)</code>, where <code>c</code> is the translation of <code>p</code> into GCL.</li>
+</ul>
+</li>
+<li><img src="/2019/04/23/reading8/4_2.png" title="4_2">
+</li>
+</ul>
+<h1 id="CONTROL-PLANE-INTERFACE"><a href="#CONTROL-PLANE-INTERFACE" class="headerlink" title="CONTROL-PLANE INTERFACE"></a>CONTROL-PLANE INTERFACE</h1><p>we constrain the behavior of the control plane using symbolic constraints in a control-plane interface. Figure 4 defines syntax for the additional expressions that can be used to define the controlplane interface. </p>
+<ul>
+<li>The expression <code>reach(t)</code> is set to 1 if the execution reaches an application of t . </li>
+<li>The expression <code>reads(t, k)</code> is set to the data-plane value read by <code>t</code> identified by <code>k</code>.</li>
+<li>Similarly, <code>wildcard(t, k)</code> evaluates to 1 if the value identified by <code>k</code> is matched against an all-wildcard pattern.</li>
+<li>The expressions <code>hit(t)</code> and <code>miss(t)</code> evaluate to 1 if executing the table hits and misses respectively. </li>
+<li>Finally, the expression <code>action_data(t, a, x)</code> returns the value of the action data for parameter <code>x</code> in action <code>a</code> of table <code>t</code>.</li>
+</ul>
+<img src="/2019/04/23/reading8/5_1.png" title="5_1">
+<p>the highlevel idea is as follows: we instrument the program with ghost variables to keep track of which tables and actions are executed, we translate the control-plane interface into a logical formula involving those ghost variables, and finally we predicate every assertion in the program on this formula.</p>
+<h1 id="IMPLEMENTATION"><a href="#IMPLEMENTATION" class="headerlink" title="IMPLEMENTATION"></a>IMPLEMENTATION</h1><img src="/2019/04/23/reading8/6_1.png" title="6_1">
+<ul>
+<li>Parsing and type checking</li>
+<li>Instrumentation</li>
+<li>Inlining</li>
+<li>Annotation</li>
+<li>Passivization</li>
+<li>Optimizations</li>
+<li>Verification conditions</li>
+<li>Counter-example generation</li>
+</ul>
+<h1 id="CASE-STUDIES"><a href="#CASE-STUDIES" class="headerlink" title="CASE STUDIES"></a>CASE STUDIES</h1><ul>
+<li>Header validity for switch.p4</li>
+<li>NetCache parser roundtripping</li>
+<li>NetPaxos bug</li>
+<li>Enabling compiler optimizations</li>
+</ul>
+<h1 id="EVALUATION"><a href="#EVALUATION" class="headerlink" title="EVALUATION"></a>EVALUATION</h1><hr>
+
+<iframe src="//player.bilibili.com/player.html?aid=49803272&cid=87197612&page=1" scrolling="no" border="0" frameborder="no" framespacing="0" allowfullscreen="true"> </iframe>
+
+
+      
+    </div>
+
+    
+
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/Reading/" rel="tag"># Reading</a>
+          
+            <a href="/tags/Plan/" rel="tag"># Plan</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2019/04/22/LogiQL/" rel="next" title="LogiQL 教程">
+                <i class="fa fa-chevron-left"></i> LogiQL 教程
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2019/04/24/reading9/" rel="prev" title="100天阅读计划 -- 9">
+                100天阅读计划 -- 9 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+  </div>
+
+
+          </div>
+          
+
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            Table of Contents
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            Overview
+          </li>
+        </ul>
+      
+
+      <section class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <img class="site-author-image" itemprop="image" src="https://avatars2.githubusercontent.com/u/22347608?s=460&v=4" alt="D. HT. Y.">
+            
+              <p class="site-author-name" itemprop="name">D. HT. Y.</p>
+              <p class="site-description motion-element" itemprop="description"></p>
+          </div>
+
+          
+            <nav class="site-state motion-element">
+              
+                <div class="site-state-item site-state-posts">
+                
+                  <a href="/archives/">
+                
+                    <span class="site-state-item-count">29</span>
+                    <span class="site-state-item-name">posts</span>
+                  </a>
+                </div>
+              
+
+              
+
+              
+                
+                
+                <div class="site-state-item site-state-tags">
+                  
+                    
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                    <span class="site-state-item-count">26</span>
+                    <span class="site-state-item-name">tags</span>
+                  
+                </div>
+              
+            </nav>
+          
+
+          
+
+          
+
+          
+          
+
+          
+          
+
+          
+            
+          
+          
+
+        </div>
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#ABSTRACT"><span class="nav-number">1.</span> <span class="nav-text">ABSTRACT</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#INTRODUCTION"><span class="nav-number">2.</span> <span class="nav-text">INTRODUCTION</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#BACKGROUND-ON-P4"><span class="nav-number">3.</span> <span class="nav-text">BACKGROUND ON P4</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#DATA-PLANE-PROPERTIES"><span class="nav-number">4.</span> <span class="nav-text">DATA-PLANE PROPERTIES</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#VERIFICATION-METHODOLOGY"><span class="nav-number">5.</span> <span class="nav-text">VERIFICATION METHODOLOGY</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#CONTROL-PLANE-INTERFACE"><span class="nav-number">6.</span> <span class="nav-text">CONTROL-PLANE INTERFACE</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#IMPLEMENTATION"><span class="nav-number">7.</span> <span class="nav-text">IMPLEMENTATION</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#CASE-STUDIES"><span class="nav-number">8.</span> <span class="nav-text">CASE STUDIES</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#EVALUATION"><span class="nav-number">9.</span> <span class="nav-text">EVALUATION</span></a></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; <span itemprop="copyrightYear">2019</span>
+  <span class="with-love" id="animate">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">D. HT. Y.</span>
+
+  
+
+  
+</div>
+
+
+  
+
+
+
+  <div class="powered-by">Powered by <a class="theme-link" target="_blank" rel="external nofollow" href="https://hexo.io">Hexo</a> v3.8.0</div>
+
+
+
+  <span class="post-meta-divider">|</span>
+
+
+
+  <div class="theme-info">Theme – <a class="theme-link" target="_blank" rel="external nofollow" href="https://theme-next.org">NexT.Pisces</a> v6.4.2</div>
+
+
+
+
+        
+
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+    
+	
+    
+
+    
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=6.4.2"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=6.4.2"></script>
+
+
+
+  
+  
+
+
+  <script type="text/javascript" src="/js/src/affix.js?v=6.4.2"></script>
+
+  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=6.4.2"></script>
+
+
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=6.4.2"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=6.4.2"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=6.4.2"></script>
+
+
+
+  
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+  
+
+  
+  
+
+  
+    
+      <script type="text/x-mathjax-config">
+    MathJax.Hub.Config({
+      tex2jax: {
+        inlineMath: [ ['$','$'], ["\\(","\\)"]  ],
+        processEscapes: true,
+        skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+      },
+      TeX: {equationNumbers: { autoNumber: "AMS" }}
+    });
+</script>
+
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Queue(function() {
+      var all = MathJax.Hub.getAllJax(), i;
+        for (i=0; i < all.length; i += 1) {
+          all[i].SourceElement().parentNode.className += ' has-jax';
+        }
+    });
+</script>
+<script type="text/javascript" src="//cdn.jsdelivr.net/npm/mathjax@2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+
+    
+  
+
+
+  
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+<script src="/live2dw/lib/L2Dwidget.min.js?094cbace49a39548bed64abff5988b05"></script><script>L2Dwidget.init({"pluginRootPath":"live2dw/","pluginJsPath":"lib/","pluginModelPath":"assets/","tagMode":false,"debug":false,"model":{"jsonPath":"/live2dw/assets/xiaoban.model.json"},"display":{"position":"left","width":180,"height":300},"mobile":{"show":true},"react":{"opacity":0.9},"log":false});</script></body>
+</html>

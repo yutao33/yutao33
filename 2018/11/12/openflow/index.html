@@ -1,0 +1,884 @@
+<!DOCTYPE html>
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+<html class="theme-next pisces use-motion" lang="en">
+<head><meta name="generator" content="Hexo 3.8.0">
+  <meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform">
+<meta http-equiv="Cache-Control" content="no-siteapp">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css">
+
+<link href="/css/main.css?v=6.4.2" rel="stylesheet" type="text/css">
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=6.4.2">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=6.4.2">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=6.4.2">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=6.4.2" color="#222">
+
+
+
+
+
+
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Pisces',
+    version: '6.4.2',
+    sidebar: {"position":"left","display":"post","offset":12,"b2t":false,"scrollpercent":false,"onmobile":false},
+    fancybox: false,
+    fastclick: false,
+    lazyload: false,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+  
+
+
+
+
+  <meta name="description" content="转自 https://blog.csdn.net/mingge591/article/details/50952305 创建一个OVS交换机 1ovs-vsctl add-br ovs-switch 创建一个端口 p0，设置端口 p0 的 OpenFlow 端口编号为 100 1ovs-vsctl add-port ovs-switch p0 -- set Interface p0 ofport_">
+<meta name="keywords" content="OpenFlow">
+<meta property="og:type" content="article">
+<meta property="og:title" content="OpenFlow命令示例">
+<meta property="og:url" content="https://yutao33.github.io/2018/11/12/openflow/index.html">
+<meta property="og:site_name" content="Github Pages of D. HT. Y.">
+<meta property="og:description" content="转自 https://blog.csdn.net/mingge591/article/details/50952305 创建一个OVS交换机 1ovs-vsctl add-br ovs-switch 创建一个端口 p0，设置端口 p0 的 OpenFlow 端口编号为 100 1ovs-vsctl add-port ovs-switch p0 -- set Interface p0 ofport_">
+<meta property="og:locale" content="en">
+<meta property="og:updated_time" content="2019-07-02T08:31:55.870Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="OpenFlow命令示例">
+<meta name="twitter:description" content="转自 https://blog.csdn.net/mingge591/article/details/50952305 创建一个OVS交换机 1ovs-vsctl add-br ovs-switch 创建一个端口 p0，设置端口 p0 的 OpenFlow 端口编号为 100 1ovs-vsctl add-port ovs-switch p0 -- set Interface p0 ofport_">
+
+
+
+
+
+
+  <link rel="canonical" href="https://yutao33.github.io/2018/11/12/openflow/">
+
+
+
+<script type="text/javascript" id="page.configurations">
+  CONFIG.page = {
+    sidebar: "",
+  };
+</script>
+
+  <title>OpenFlow命令示例 | Github Pages of D. HT. Y.</title>
+  
+
+
+
+
+
+
+
+
+
+  <noscript>
+  <style type="text/css">
+    .use-motion .motion-element,
+    .use-motion .brand,
+    .use-motion .menu-item,
+    .sidebar-inner,
+    .use-motion .post-block,
+    .use-motion .pagination,
+    .use-motion .comments,
+    .use-motion .post-header,
+    .use-motion .post-body,
+    .use-motion .collection-title { opacity: initial; }
+
+    .use-motion .logo,
+    .use-motion .site-title,
+    .use-motion .site-subtitle {
+      opacity: initial;
+      top: initial;
+    }
+
+    .use-motion {
+      .logo-line-before i { left: initial; }
+      .logo-line-after i { right: initial; }
+    }
+  </style>
+</noscript>
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="en">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/" class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">Github Pages of D. HT. Y.</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+    
+  </div>
+
+  <div class="site-nav-toggle">
+    <button aria-label="Toggle navigation bar">
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+
+
+<nav class="site-nav">
+  
+    <ul id="menu" class="menu">
+      
+        
+        
+        
+          
+          <li class="menu-item menu-item-home">
+    <a href="/" rel="section">
+      <i class="menu-item-icon fa fa-fw fa-home"></i> <br>Home</a>
+  </li>
+        
+        
+        
+          
+          <li class="menu-item menu-item-archives">
+    <a href="/archives/" rel="section">
+      <i class="menu-item-icon fa fa-fw fa-archive"></i> <br>Archives</a>
+  </li>
+
+      
+      
+    </ul>
+  
+
+  
+
+  
+</nav>
+
+
+
+  
+
+
+
+</div>
+    </header>
+
+    
+
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          
+            
+
+          
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="https://yutao33.github.io/2018/11/12/openflow/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="D. HT. Y.">
+      <meta itemprop="description" content>
+      <meta itemprop="image" content="https://avatars2.githubusercontent.com/u/22347608?s=460&v=4">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Github Pages of D. HT. Y.">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h2 class="post-title" itemprop="name headline">OpenFlow命令示例
+              
+            
+          </h2>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+
+            
+            
+            
+
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+
+              
+                
+              
+
+              <time title="Created: 2018-11-12 15:30:40" itemprop="dateCreated datePublished" datetime="2018-11-12T15:30:40+08:00">2018-11-12</time>
+            
+
+            
+              
+
+              
+                
+                <span class="post-meta-divider">|</span>
+                
+
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">Edited on</span>
+                
+                <time title="Modified: 2019-07-02 16:31:55" itemprop="dateModified" datetime="2019-07-02T16:31:55+08:00">2019-07-02</time>
+              
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <p>转自 <a href="https://blog.csdn.net/mingge591/article/details/50952305" target="_blank" rel="noopener">https://blog.csdn.net/mingge591/article/details/50952305</a></p>
+<p>创建一个OVS交换机</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ovs-vsctl add-br ovs-switch</span><br></pre></td></tr></table></figure>
+<p>创建一个端口 p0，设置端口 p0 的 OpenFlow 端口编号为 100</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ovs-vsctl add-port ovs-switch p0 -- set Interface p0 ofport_request=100</span><br></pre></td></tr></table></figure>
+<p>设置网络接口设备类型为”internal”</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ovs-vsctl set Interface p0 type=internal</span><br></pre></td></tr></table></figure>
+<p>查看设置结果</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ethtool -i p0</span><br></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">driver: openvswitch</span><br><span class="line">version: </span><br><span class="line">firmware-version: </span><br><span class="line">bus-info: </span><br><span class="line">supports-statistics: no</span><br><span class="line">supports-test: no</span><br><span class="line">supports-eeprom-access: no</span><br><span class="line">supports-register-dump: no</span><br><span class="line">supports-priv-flags: no</span><br></pre></td></tr></table></figure>
+<p>创建一个name space：ns0，把p0端口接入到ns0里，并且配置ip地址 192.168.1.100/24</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">ip netns add ns0</span><br><span class="line">ip link set p0 netns ns0</span><br><span class="line">ip netns exec ns0 ip addr add 192.168.1.100/24 dev p0</span><br><span class="line">ip netns exec ns0 ifconfig p0 promisc up</span><br></pre></td></tr></table></figure>
+<p>查看创建结果</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">ovs-vsctl show</span><br><span class="line">6507c214-0c7a-4159-9813-977074f73aa1</span><br><span class="line">    Bridge ovs-switch</span><br><span class="line">        Port &quot;p0&quot;</span><br><span class="line">            Interface &quot;p0&quot;</span><br><span class="line">                type: internal</span><br><span class="line">        Port ovs-switch</span><br><span class="line">            Interface ovs-switch</span><br><span class="line">                type: internal</span><br><span class="line">    ovs_version: &quot;2.0.2&quot;</span><br></pre></td></tr></table></figure>
+<p>重复步骤，创建p1和p2端口</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">ovs-vsctl add-port ovs-switch p1 -- set Interface p1 ofport_request=101</span><br><span class="line">ovs-vsctl set Interface p1 type=internal</span><br><span class="line">ip netns add ns1</span><br><span class="line">ip link set p1 netns ns1</span><br><span class="line">ip netns exec ns1 ip addr add 192.168.1.101/24 dev p1</span><br><span class="line">ip netns exec ns1 ifconfig p1 promisc up</span><br></pre></td></tr></table></figure>
+<p>查看创建结果</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">ovs-vsctl show</span><br><span class="line">c402802a-dbe0-4127-9bce-e2405a4ac33d</span><br><span class="line">    Bridge ovs-switch</span><br><span class="line">        Port &quot;p0&quot;</span><br><span class="line">            Interface &quot;p0&quot;</span><br><span class="line">                type: internal</span><br><span class="line">        Port ovs-switch</span><br><span class="line">            Interface ovs-switch</span><br><span class="line">                type: internal</span><br><span class="line">        Port &quot;p1&quot;</span><br><span class="line">            Interface &quot;p1&quot;</span><br><span class="line">                type: internal</span><br><span class="line">    ovs_version: &quot;2.0.2&quot;</span><br></pre></td></tr></table></figure>
+<p>创建p2</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">ovs-vsctl add-port ovs-switch p2 -- set Interface p2 ofport_request=102</span><br><span class="line">ovs-vsctl set Interface p2 type=internal</span><br><span class="line">ip netns add ns2</span><br><span class="line">ip link set p2 netns ns2</span><br><span class="line">ip netns exec ns2 ip addr add 192.168.1.102/24 dev p2</span><br><span class="line">ip netns exec ns2 ifconfig p2 promisc up</span><br></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">c402802a-dbe0-4127-9bce-e2405a4ac33d</span><br><span class="line">    Bridge ovs-switch</span><br><span class="line">        Port &quot;p0&quot;</span><br><span class="line">            Interface &quot;p0&quot;</span><br><span class="line">                type: internal</span><br><span class="line">        Port &quot;p2&quot;</span><br><span class="line">            Interface &quot;p2&quot;</span><br><span class="line">                type: internal</span><br><span class="line">        Port ovs-switch</span><br><span class="line">            Interface ovs-switch</span><br><span class="line">                type: internal</span><br><span class="line">        Port &quot;p1&quot;</span><br><span class="line">            Interface &quot;p1&quot;</span><br><span class="line">                type: internal</span><br><span class="line">    ovs_version: &quot;2.0.2&quot;</span><br></pre></td></tr></table></figure>
+<p>查看创建的交换机信息，获得dpid，端口openflow端口编号</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ovs-ofctl show ovs-switch</span><br></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line">OFPT_FEATURES_REPLY (xid=0x2): dpid:0000c6d6454c204e</span><br><span class="line">n_tables:254, n_buffers:256</span><br><span class="line">capabilities: FLOW_STATS TABLE_STATS PORT_STATS QUEUE_STATS ARP_MATCH_IP</span><br><span class="line">actions: OUTPUT SET_VLAN_VID SET_VLAN_PCP STRIP_VLAN SET_DL_SRC SET_DL_DST SET_NW_SRC SET_NW_DST SET_NW_TOS SET_TP_SRC SET_TP_DST ENQUEUE</span><br><span class="line">100(p0): addr:00:00:00:00:00:00</span><br><span class="line">     config:     PORT_DOWN</span><br><span class="line">     state:      LINK_DOWN</span><br><span class="line">     speed: 0 Mbps now, 0 Mbps max</span><br><span class="line">101(p1): addr:00:00:00:00:00:00</span><br><span class="line">     config:     PORT_DOWN</span><br><span class="line">     state:      LINK_DOWN</span><br><span class="line">     speed: 0 Mbps now, 0 Mbps max</span><br><span class="line">102(p2): addr:00:00:00:00:00:00</span><br><span class="line">     config:     PORT_DOWN</span><br><span class="line">     state:      LINK_DOWN</span><br><span class="line">     speed: 0 Mbps now, 0 Mbps max</span><br><span class="line">LOCAL(ovs-switch): addr:76:f1:e5:e8:19:ed</span><br><span class="line">     config:     PORT_DOWN</span><br><span class="line">     state:      LINK_DOWN</span><br><span class="line">     speed: 0 Mbps now, 0 Mbps max</span><br><span class="line">OFPT_GET_CONFIG_REPLY (xid=0x4): frags=normal miss_send_len=0</span><br></pre></td></tr></table></figure>
+<p>获取openflow端口编号</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ovs-vsctl get Interface p0 ofport</span><br></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">100</span><br><span class="line">ovs-vsctl get Interface p1 ofport</span><br></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">101</span><br><span class="line">ovs-vsctl get Interface p2 ofport</span><br></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">102</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">查看 datapath 的信息</span><br><span class="line">ovs-dpctl show</span><br></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">system@ovs-system:</span><br><span class="line">        lookups: hit:35 missed:21 lost:0</span><br><span class="line">        flows: 0</span><br><span class="line">        port 0: ovs-system (internal)</span><br><span class="line">        port 1: ovs-switch (internal)</span><br><span class="line">        port 2: p0 (internal)</span><br><span class="line">        port 3: p1 (internal)</span><br><span class="line">        port 4: p2 (internal)</span><br></pre></td></tr></table></figure>
+<p>查看mac地址</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">ip netns exec ns0 ping 192.168.1.100</span><br><span class="line">ip netns exec ns0 ping 192.168.1.101</span><br><span class="line">ip netns exec ns0 ping 192.168.1.102</span><br></pre></td></tr></table></figure>
+<p>这里100ping不同，原因不明</p>
+<p>然后运行</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ovs-appctl fdb/show ovs-switch</span><br></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">port  VLAN  MAC                Age</span><br><span class="line">  101     0  1a:19:57:65:03:f2   55</span><br><span class="line">  102     0  36:54:7a:1c:c9:43   48</span><br><span class="line">  100     0  36:92:12:98:4d:40   48</span><br></pre></td></tr></table></figure>
+<p>查看交换机所有table</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ovs-ofctl dump-tables ovs-switch</span><br></pre></td></tr></table></figure>
+<p>253个table.</p>
+<p>查看交换机中的所有流表项</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ovs−ofctl dump−flows ovs-switch</span><br></pre></td></tr></table></figure>
+<p>输出如下信息：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">cookie=0x0, duration=1756.751s, table=0, n_packets=96, n_bytes=7784, idle_age=303, priority=0 actions=NORMAL</span><br></pre></td></tr></table></figure>
+<p>删除编号为 100 的端口上的所有流表项</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ovs-ofctl del-flows ovs-switch &quot;in_port=100&quot;</span><br></pre></td></tr></table></figure>
+<p>查看交换机端口信息</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ovs-ofctl show ovs-switch</span><br></pre></td></tr></table></figure>
+<p>修改数据包</p>
+<p>屏蔽所有进入 OVS 的以太网广播数据包</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ovs-ofctl add-flow ovs-switch &quot;table=0, dl_src=01:00:00:00:00:00/01:00:00:00:00:00, actions=drop&quot;</span><br></pre></td></tr></table></figure>
+<p>屏蔽 STP 协议的广播数据包</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ovs-ofctl add-flow ovs-switch &quot;table=0, dl_dst=01:80:c2:00:00:00/ff:ff:ff:ff:ff:f0, actions=drop&quot;</span><br></pre></td></tr></table></figure>
+<p>修改数据包，添加新的 OpenFlow 条目，修改从端口 p0 收到的数据包的源地址为 9.181.137.1</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">ovs-ofctl add-flow ovs-switch &quot;priority=1 idle_timeout=0,\</span><br><span class="line">    in_port=100,actions=mod_nw_src:9.181.137.1,normal&quot;</span><br></pre></td></tr></table></figure>
+<p>从端口 p0（192.168.1.100）发送测试数据到端口 p1（192.168.1.101），就是没啥响应</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ip netns exec ns0 ping 192.168.1.101</span><br></pre></td></tr></table></figure>
+<p>再打开一个ssh终端，登录进去，运行tcpdump，需要等待几分钟，才能看到响应</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ip netns exec ns1 tcpdump -i p1 icmp</span><br></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line">ip netns exec ns1 tcpdump -i p1 icmp</span><br><span class="line">tcpdump: verbose output suppressed, use -v or -vv for full protocol decode</span><br><span class="line">listening on p1, link-type EN10MB (Ethernet), capture size 65535 bytes</span><br><span class="line">02:40:20.212575 IP 9.181.137.1 &gt; 192.168.1.101: ICMP echo request, id 2118, seq 89, length 64</span><br><span class="line">02:40:21.220600 IP 9.181.137.1 &gt; 192.168.1.101: ICMP echo request, id 2118, seq 90, length 64</span><br><span class="line">02:40:22.228630 IP 9.181.137.1 &gt; 192.168.1.101: ICMP echo request, id 2118, seq 91, length 64</span><br><span class="line">02:40:23.236670 IP 9.181.137.1 &gt; 192.168.1.101: ICMP echo request, id 2118, seq 92, length 64</span><br><span class="line">02:40:24.244721 IP 9.181.137.1 &gt; 192.168.1.101: ICMP echo request, id 2118, seq 93, length 64</span><br><span class="line">02:40:25.252758 IP 9.181.137.1 &gt; 192.168.1.101: ICMP echo request, id 2118, seq 94, length 64</span><br><span class="line">02:40:26.260777 IP 9.181.137.1 &gt; 192.168.1.101: ICMP echo request, id 2118, seq 95, length 64</span><br><span class="line">02:40:27.268868 IP 9.181.137.1 &gt; 192.168.1.101: ICMP echo request, id 2118, seq 96, length 64</span><br><span class="line">02:40:28.276857 IP 9.181.137.1 &gt; 192.168.1.101: ICMP echo request, id 2118, seq 97, length 64</span><br><span class="line">02:40:29.284839 IP 9.181.137.1 &gt; 192.168.1.101: ICMP echo request, id 2118, seq 98, length 64</span><br><span class="line">02:40:30.292939 IP 9.181.137.1 &gt; 192.168.1.101: ICMP echo request, id 2118, seq 99, length 64</span><br><span class="line">02:40:31.300987 IP 9.181.137.1 &gt; 192.168.1.101: ICMP echo request, id 2118, seq 100, length 64</span><br><span class="line">02:40:32.308972 IP 9.181.137.1 &gt; 192.168.1.101: ICMP echo request, id 2118, seq 101, length 64</span><br><span class="line">02:40:33.317053 IP 9.181.137.1 &gt; 192.168.1.101: ICMP echo request, id 2118, seq 102, length 64</span><br><span class="line">02:40:34.325103 IP 9.181.137.1 &gt; 192.168.1.101: ICMP echo request, id 2118, seq 103, length 64</span><br></pre></td></tr></table></figure>
+<p>重定向数据包</p>
+<p>添加新的 OpenFlow 条目，重定向所有的 ICMP 数据包到端口 p2</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ovs-ofctl add-flow ovs-switch idle_timeout=0,dl_type=0x0800,nw_proto=1,actions=output:102</span><br></pre></td></tr></table></figure>
+<p>从端口 p0 （192.168.1.100）发送数据到端口 p1（192.168.1.101）</p>
+<p>这个时候你从p2里，可以看到</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">tcpdump: verbose output suppressed, use -v or -vv for full protocol decode</span><br><span class="line">listening on p2, link-type EN10MB (Ethernet), capture size 65535 bytes</span><br><span class="line">06:25:38.252471 IP 192.168.1.100 &gt; 192.168.1.101: ICMP echo request, id 4668, seq 35, length 64</span><br><span class="line">06:25:39.260438 IP 192.168.1.100 &gt; 192.168.1.101: ICMP echo request, id 4668, seq 36, length 64</span><br><span class="line">06:25:40.268419 IP 192.168.1.100 &gt; 192.168.1.101: ICMP echo request, id 4668, seq 37, length 64</span><br></pre></td></tr></table></figure>
+<p>修改vlan tag</p>
+<p>修改端口 p1 的 VLAN tag 为 101，使端口 p1 成为一个隶属于 VLAN 101 的端口</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ovs-vsctl set Port p1 tag=101</span><br></pre></td></tr></table></figure>
+<p>现在由于端口 p0 和 p1 属于不同的 VLAN，它们之间无法进行数据交换。我们使用 ovs-appctl ofproto/trace 生成一个从端口 p0 发送到端口 p1 的数据包，这个数据包不包含任何 VLAN tag，并观察 OVS 的处理过程</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">ovs-appctl ofproto/trace ovs-switch in_port=100,dl_src=d6:0f:7e:ed:11:e4,\</span><br><span class="line">dl_dst=f2:0d:06:ff:79:d7 -generate</span><br></pre></td></tr></table></figure>
+<p>注意：上面第一个mac地址，是p0的，第二个mac地址是p1的，你需要替换，上面有获取mac地址的方法。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">ovs-appctl ofproto/trace ovs-switch in_port=100,dl_src=d6:0f:7e:ed:11:e4,\</span><br><span class="line">&gt; dl_dst=f2:0d:06:ff:79:d7 -generate</span><br><span class="line">Flow: metadata=0,in_port=100,vlan_tci=0x0000,dl_src=d6:0f:7e:ed:11:e4,dl_dst=f2:0d:06:ff:79:d7,dl_type=0x0000</span><br><span class="line">Rule: table=0 cookie=0 priority=1,in_port=100</span><br><span class="line">OpenFlow actions=mod_nw_src:9.181.137.1,NORMAL</span><br><span class="line">no learned MAC for destination, flooding</span><br><span class="line"></span><br><span class="line">Final flow: unchanged</span><br><span class="line">Relevant fields: skb_priority=0,in_port=100,vlan_tci=0x0000/0x1fff,dl_src=d6:0f:7e:ed:11:e4,</span><br><span class="line">dl_dst=f2:0d:06:ff:79:d7,dl_type=0x0000,nw_src=0.0.0.0,nw_proto=0,nw_frag=no</span><br><span class="line">Datapath actions: 1,4</span><br></pre></td></tr></table></figure>
+<p>在第一行输出中，“Flow:”之后的字段描述了输入的流的信息。由于我们没有指定太多信息，所以多数字段 （例如 dl_type 和 vlan_tci）被 OVS 设置为空值。</p>
+<p>在第二行的输出中，“Rule:” 之后的字段描述了匹配成功的流表项。</p>
+<p>在第三行的输出中，“OpenFlow actions”之后的字段描述了实际执行的操作。</p>
+<p>最后一段以”Final flow”开始的字段是整个处理过程的总结，“Datapath actions: 4,1”代表数据包被发送到 datapath 的 4 和 1 号端口。</p>
+<p>创建一条新的 Flow</p>
+<p>对于从端口 p0 进入交换机的数据包，如果它不包含任何 VLAN tag，则自动为它添加 VLAN tag 101</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">ovs-ofctl add-flow ovs-switch &quot;priority=3,in_port=100,dl_vlan=0xffff,\</span><br><span class="line">actions=mod_vlan_vid:101,normal&quot;</span><br></pre></td></tr></table></figure>
+<p>再次尝试从端口 p0 发送一个不包含任何 VLAN tag 的数据包，发现数据包进入端口 p0 之后, 会被加上 VLAN tag101, 同时转发到端口 p1 上</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line">ovs-appctl ofproto/trace ovs-switch in_port=100,dl_src=d6:0f:7e:ed:11:e4,\</span><br><span class="line">&gt; dl_dst=f2:0d:06:ff:79:d7 -generate</span><br><span class="line">Flow: metadata=0,in_port=100,vlan_tci=0x0000,dl_src=d6:0f:7e:ed:11:e4,dl_dst=f2:0d:06:ff:79:d7,dl_type=0x0000</span><br><span class="line">Rule: table=0 cookie=0 priority=1,in_port=100</span><br><span class="line">OpenFlow actions=mod_nw_src:9.181.137.1,NORMAL</span><br><span class="line">no learned MAC for destination, flooding</span><br><span class="line"></span><br><span class="line">Final flow: unchanged</span><br><span class="line">Relevant fields: skb_priority=0,in_port=100,vlan_tci=0x0000/0x1fff,dl_src=d6:0f:7e:ed:11:e4,dl_dst=f2:0d:06:ff:79:d7,dl_type=0x0000,nw_src=0.0.0.0,nw_proto=0,nw_frag=no</span><br><span class="line">Datapath actions: 1,4</span><br><span class="line">root@ovs:~# ovs-ofctl add-flow ovs-switch &quot;priority=3,in_port=100,dl_vlan=0xffff,\</span><br><span class="line">&gt; actions=mod_vlan_vid:101,normal&quot;</span><br><span class="line">root@ovs:~# ovs-appctl ofproto/trace ovs-switch in_port=100,dl_src=d6:0f:7e:ed:11:e4,\</span><br><span class="line">&gt; dl_dst=f2:0d:06:ff:79:d7 -generate</span><br><span class="line">Flow: metadata=0,in_port=100,vlan_tci=0x0000,dl_src=d6:0f:7e:ed:11:e4,dl_dst=f2:0d:06:ff:79:d7,dl_type=0x0000</span><br><span class="line">Rule: table=0 cookie=0 priority=3,in_port=100,vlan_tci=0x0000</span><br><span class="line">OpenFlow actions=mod_vlan_vid:101,NORMAL</span><br><span class="line">no learned MAC for destination, flooding</span><br><span class="line"></span><br><span class="line">Final flow: metadata=0,in_port=100,dl_vlan=101,dl_vlan_pcp=0,dl_src=d6:0f:7e:ed:11:e4,dl_dst=f2:0d:06:ff:79:d7,dl_type=0x0000</span><br><span class="line">Relevant fields: skb_priority=0,in_port=100,vlan_tci=0x0000,dl_src=d6:0f:7e:ed:11:e4,dl_dst=f2:0d:06:ff:79:d7,dl_type=0x0000,nw_proto=0,nw_frag=no</span><br><span class="line">Datapath actions: push_vlan(vid=101,pcp=0),1,pop_vlan,3,push_vlan(vid=101,pcp=0),4</span><br></pre></td></tr></table></figure>
+<p>反过来从端口 p1 发送数据包，由于 p1 现在是带有 VLAN tag 101 的 Access 类型的端口，所以数据包进入端口 p1 之后，会被 OVS 添加 VLAN tag 101 并发送到端口 p0</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">ovs-appctl ofproto/trace ovs-switch in_port=101,dl_src=f2:0d:06:ff:79:d7,\</span><br><span class="line">&gt; dl_dst=d6:0f:7e:ed:11:e4 -generate</span><br><span class="line">Flow: metadata=0,in_port=101,vlan_tci=0x0000,dl_src=f2:0d:06:ff:79:d7,dl_dst=d6:0f:7e:ed:11:e4,dl_type=0x0000</span><br><span class="line">Rule: table=0 cookie=0 priority=0</span><br><span class="line">OpenFlow actions=NORMAL</span><br><span class="line">no learned MAC for destination, flooding</span><br><span class="line"></span><br><span class="line">Final flow: unchanged</span><br><span class="line">Relevant fields: skb_priority=0,in_port=101,vlan_tci=0x0000,dl_src=f2:0d:06:ff:79:d7,dl_dst=d6:0f:7e:ed:11:e4,dl_type=0x0000,nw_proto=0,nw_frag=no</span><br><span class="line">Datapath actions: push_vlan(vid=101,pcp=0),1,2,4</span><br></pre></td></tr></table></figure>
+      
+    </div>
+
+    
+
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/OpenFlow/" rel="tag"># OpenFlow</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2018/10/14/math1/" rel="next" title="证明（0，1）是不可列集">
+                <i class="fa fa-chevron-left"></i> 证明（0，1）是不可列集
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2018/11/15/BGP-Community-attribute/" rel="prev" title="BGP Community attributes">
+                BGP Community attributes <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+  </div>
+
+
+          </div>
+          
+
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+
+      <section class="site-overview-wrap sidebar-panel sidebar-panel-active">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <img class="site-author-image" itemprop="image" src="https://avatars2.githubusercontent.com/u/22347608?s=460&v=4" alt="D. HT. Y.">
+            
+              <p class="site-author-name" itemprop="name">D. HT. Y.</p>
+              <p class="site-description motion-element" itemprop="description"></p>
+          </div>
+
+          
+            <nav class="site-state motion-element">
+              
+                <div class="site-state-item site-state-posts">
+                
+                  <a href="/archives/">
+                
+                    <span class="site-state-item-count">29</span>
+                    <span class="site-state-item-name">posts</span>
+                  </a>
+                </div>
+              
+
+              
+
+              
+                
+                
+                <div class="site-state-item site-state-tags">
+                  
+                    
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                    <span class="site-state-item-count">26</span>
+                    <span class="site-state-item-name">tags</span>
+                  
+                </div>
+              
+            </nav>
+          
+
+          
+
+          
+
+          
+          
+
+          
+          
+
+          
+            
+          
+          
+
+        </div>
+      </section>
+
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; <span itemprop="copyrightYear">2019</span>
+  <span class="with-love" id="animate">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">D. HT. Y.</span>
+
+  
+
+  
+</div>
+
+
+  
+
+
+
+  <div class="powered-by">Powered by <a class="theme-link" target="_blank" rel="external nofollow" href="https://hexo.io">Hexo</a> v3.8.0</div>
+
+
+
+  <span class="post-meta-divider">|</span>
+
+
+
+  <div class="theme-info">Theme – <a class="theme-link" target="_blank" rel="external nofollow" href="https://theme-next.org">NexT.Pisces</a> v6.4.2</div>
+
+
+
+
+        
+
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+    
+	
+    
+
+    
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=6.4.2"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=6.4.2"></script>
+
+
+
+  
+  
+
+
+  <script type="text/javascript" src="/js/src/affix.js?v=6.4.2"></script>
+
+  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=6.4.2"></script>
+
+
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=6.4.2"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=6.4.2"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=6.4.2"></script>
+
+
+
+  
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+  
+
+  
+  
+
+  
+    
+      <script type="text/x-mathjax-config">
+    MathJax.Hub.Config({
+      tex2jax: {
+        inlineMath: [ ['$','$'], ["\\(","\\)"]  ],
+        processEscapes: true,
+        skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+      },
+      TeX: {equationNumbers: { autoNumber: "AMS" }}
+    });
+</script>
+
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Queue(function() {
+      var all = MathJax.Hub.getAllJax(), i;
+        for (i=0; i < all.length; i += 1) {
+          all[i].SourceElement().parentNode.className += ' has-jax';
+        }
+    });
+</script>
+<script type="text/javascript" src="//cdn.jsdelivr.net/npm/mathjax@2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+
+    
+  
+
+
+  
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+<script src="/live2dw/lib/L2Dwidget.min.js?094cbace49a39548bed64abff5988b05"></script><script>L2Dwidget.init({"pluginRootPath":"live2dw/","pluginJsPath":"lib/","pluginModelPath":"assets/","tagMode":false,"debug":false,"model":{"jsonPath":"/live2dw/assets/xiaoban.model.json"},"display":{"position":"left","width":180,"height":300},"mobile":{"show":true},"react":{"opacity":0.9},"log":false});</script></body>
+</html>

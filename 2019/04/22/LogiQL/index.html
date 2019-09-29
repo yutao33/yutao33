@@ -1,0 +1,903 @@
+<!DOCTYPE html>
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+<html class="theme-next pisces use-motion" lang="en">
+<head><meta name="generator" content="Hexo 3.8.0">
+  <meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform">
+<meta http-equiv="Cache-Control" content="no-siteapp">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css">
+
+<link href="/css/main.css?v=6.4.2" rel="stylesheet" type="text/css">
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=6.4.2">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=6.4.2">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=6.4.2">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=6.4.2" color="#222">
+
+
+
+
+
+
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Pisces',
+    version: '6.4.2',
+    sidebar: {"position":"left","display":"post","offset":12,"b2t":false,"scrollpercent":false,"onmobile":false},
+    fancybox: false,
+    fastclick: false,
+    lazyload: false,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+  
+
+
+
+
+  <meta name="description" content="参考 LogicBlox 官方教程 https://developer.logicblox.com/content/docs4/tutorial/repl/section/split.html 开始官方的教程可以使用一个即时交互的解释器（REPL, Read-Eval-Print Loop）， 每次打开网页后都会解释器会刷新工作区，但是可以选择保存下载一个zip文件，再选择恢复上传备份文件 弗雷德">
+<meta name="keywords" content="LogiQL">
+<meta property="og:type" content="article">
+<meta property="og:title" content="LogiQL 教程">
+<meta property="og:url" content="https://yutao33.github.io/2019/04/22/LogiQL/index.html">
+<meta property="og:site_name" content="Github Pages of D. HT. Y.">
+<meta property="og:description" content="参考 LogicBlox 官方教程 https://developer.logicblox.com/content/docs4/tutorial/repl/section/split.html 开始官方的教程可以使用一个即时交互的解释器（REPL, Read-Eval-Print Loop）， 每次打开网页后都会解释器会刷新工作区，但是可以选择保存下载一个zip文件，再选择恢复上传备份文件 弗雷德">
+<meta property="og:locale" content="en">
+<meta property="og:image" content="https://yutao33.github.io/images/LogiQL-c3.png">
+<meta property="og:image" content="https://yutao33.github.io/images/LogiQL-c4-1.png">
+<meta property="og:image" content="https://yutao33.github.io/images/LogiQL-c4-2.png">
+<meta property="og:image" content="https://yutao33.github.io/images/LogiQL-c5.png">
+<meta property="og:image" content="https://yutao33.github.io/images/LogiQL-c7.png">
+<meta property="og:image" content="https://yutao33.github.io/images/LogiQL-c7-1.png">
+<meta property="og:image" content="https://yutao33.github.io/images/LogiQL-c8.png">
+<meta property="og:updated_time" content="2019-04-22T12:22:57.909Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="LogiQL 教程">
+<meta name="twitter:description" content="参考 LogicBlox 官方教程 https://developer.logicblox.com/content/docs4/tutorial/repl/section/split.html 开始官方的教程可以使用一个即时交互的解释器（REPL, Read-Eval-Print Loop）， 每次打开网页后都会解释器会刷新工作区，但是可以选择保存下载一个zip文件，再选择恢复上传备份文件 弗雷德">
+<meta name="twitter:image" content="https://yutao33.github.io/images/LogiQL-c3.png">
+
+
+
+
+
+
+  <link rel="canonical" href="https://yutao33.github.io/2019/04/22/LogiQL/">
+
+
+
+<script type="text/javascript" id="page.configurations">
+  CONFIG.page = {
+    sidebar: "",
+  };
+</script>
+
+  <title>LogiQL 教程 | Github Pages of D. HT. Y.</title>
+  
+
+
+
+
+
+
+
+
+
+  <noscript>
+  <style type="text/css">
+    .use-motion .motion-element,
+    .use-motion .brand,
+    .use-motion .menu-item,
+    .sidebar-inner,
+    .use-motion .post-block,
+    .use-motion .pagination,
+    .use-motion .comments,
+    .use-motion .post-header,
+    .use-motion .post-body,
+    .use-motion .collection-title { opacity: initial; }
+
+    .use-motion .logo,
+    .use-motion .site-title,
+    .use-motion .site-subtitle {
+      opacity: initial;
+      top: initial;
+    }
+
+    .use-motion {
+      .logo-line-before i { left: initial; }
+      .logo-line-after i { right: initial; }
+    }
+  </style>
+</noscript>
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="en">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/" class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">Github Pages of D. HT. Y.</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+    
+  </div>
+
+  <div class="site-nav-toggle">
+    <button aria-label="Toggle navigation bar">
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+
+
+<nav class="site-nav">
+  
+    <ul id="menu" class="menu">
+      
+        
+        
+        
+          
+          <li class="menu-item menu-item-home">
+    <a href="/" rel="section">
+      <i class="menu-item-icon fa fa-fw fa-home"></i> <br>Home</a>
+  </li>
+        
+        
+        
+          
+          <li class="menu-item menu-item-archives">
+    <a href="/archives/" rel="section">
+      <i class="menu-item-icon fa fa-fw fa-archive"></i> <br>Archives</a>
+  </li>
+
+      
+      
+    </ul>
+  
+
+  
+
+  
+</nav>
+
+
+
+  
+
+
+
+</div>
+    </header>
+
+    
+
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          
+            
+
+          
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="https://yutao33.github.io/2019/04/22/LogiQL/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="D. HT. Y.">
+      <meta itemprop="description" content>
+      <meta itemprop="image" content="https://avatars2.githubusercontent.com/u/22347608?s=460&v=4">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Github Pages of D. HT. Y.">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h2 class="post-title" itemprop="name headline">LogiQL 教程
+              
+            
+          </h2>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+
+            
+            
+            
+
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+
+              
+                
+              
+
+              <time title="Created: 2019-04-22 17:12:40 / Modified: 20:22:57" itemprop="dateCreated datePublished" datetime="2019-04-22T17:12:40+08:00">2019-04-22</time>
+            
+
+            
+              
+
+              
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <p>参考 LogicBlox 官方教程 <a href="https://developer.logicblox.com/content/docs4/tutorial/repl/section/split.html" target="_blank" rel="noopener">https://developer.logicblox.com/content/docs4/tutorial/repl/section/split.html</a></p>
+<h1 id="开始"><a href="#开始" class="headerlink" title="开始"></a>开始</h1><p>官方的教程可以使用一个即时交互的解释器（REPL, Read-Eval-Print Loop）， 每次打开网页后都会解释器会刷新工作区，但是可以选择保存下载一个zip文件，再选择恢复上传备份文件</p>
+<h1 id="弗雷德的奥德冰淇淋店"><a href="#弗雷德的奥德冰淇淋店" class="headerlink" title="弗雷德的奥德冰淇淋店"></a>弗雷德的奥德冰淇淋店</h1><p>教程提供了一个简单的冰淇淋店账目系统作为背景，在系统里需要记录</p>
+<ul>
+<li>每种冰淇淋的成本 <code>cost (labor, ingredients)</code></li>
+<li>每种冰淇淋的价格 <code>price</code></li>
+<li>每周销售额 <code>sales</code></li>
+</ul>
+<p>弗雷德希望查询的信息有</p>
+<ul>
+<li>每周每种冰淇淋的营收 <code>revenue</code></li>
+<li>每周所有冰淇淋营收 <code>week revenue</code></li>
+<li>每周每种冰淇淋的利润 <code>profit</code></li>
+<li>每周所有冰淇淋的利润  <code>week profit</code></li>
+</ul>
+<h1 id="记录成本、价格和销售额"><a href="#记录成本、价格和销售额" class="headerlink" title="记录成本、价格和销售额"></a>记录成本、价格和销售额</h1><p>为了跟踪每种冰淇淋类型的成本，价格和销售情况，我们将定义一些谓词(predicates)。 具体来说，我们将定义功能谓词(functioanl predicates)。 谓词类似于SQL数据库中的表，功能谓词就像一个表，其中除最后一列之外的所有列都形成主键，最后一列表示该值，因此最多一个值可以与一个主键相关联。 我们首先定义一个<code>cost</code>谓词来保存某种冰淇淋的生产成本。 因此，有效成本定义了从冰淇淋类型名称到数字的映射。 我们将价格模型化为整数（以美分计）。 用于定义<code>cost</code>谓词的LogiQL如下：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">cost[icecream] = c -&gt;</span><br><span class="line">   string(icecream), int(c).</span><br></pre></td></tr></table></figure>
+<p>这个定义说：存在一个名为<code>cost</code>的函数谓词，它有一个键：<code>icecream</code>和一个名为<code>c</code>的值。 指向右侧的箭头表示约束，约束表明如果箭头左侧的部分为真，则右侧的部分也必须保持。在这个例子中，这意味着<code>icecream</code>的值必须出现在内置<code>string</code>谓词中（即<code>icecream</code>的值必须是一个字符串），并且<code>c</code>必须出现在内置的<code>int</code>谓词中（即它必须具有整数值）。</p>
+<p>但是，我们不能简单地将此LogiQL代码以此形式输入REPL。 REPL用于定义谓词的命令称为<code>addblock</code>。 <code>addblock</code>有一个参数：我们需要在引号之间添加的定义的LogiQL代码。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">addblock &apos;cost[icecream] = c -&gt;</span><br><span class="line">   string(icecream), int(c).&apos;</span><br></pre></td></tr></table></figure>
+<p>现在可以通过list命令查看系统里定义过的谓词</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">list</span><br></pre></td></tr></table></figure>
+<p><img src="/images/LogiQL-c3.png" alt></p>
+<h1 id="处理事实-facts"><a href="#处理事实-facts" class="headerlink" title="处理事实(facts)"></a>处理事实(facts)</h1><p>谓词里的数据项在LogiQL里被称为事实<code>facts</code>，为了插入一些<code>facts</code>，我们可以执行一些增量更新(<code>delta updates</code>)</p>
+<ul>
+<li><code>insert</code> : 插入数据(以<code>+</code>号表示)</li>
+<li><code>remove</code> : 移除数据(以<code>-</code>号表示)</li>
+<li><code>upsert</code> : 更新数据，如果不存在则插入(以<code>^</code>表示，仅用于函数谓词)</li>
+</ul>
+<p>我们将从插入一些事实开始。 在REPL中运行以下命令以输入柠檬冰棒的成本（23ct）：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">exec &apos;+cost[&quot;Popsicle Lemon&quot;] = 23.&apos;</span><br></pre></td></tr></table></figure>
+<p>注意，这里使用的是exec命令而不是addblock。 在LogicBlox中，使用addblock将“持久”代码添加到我们的工作区，例如添加到您的模式（适用于所有未来命令的定义），而exec用以执行一次性命令。</p>
+<p>使用<code>print cost</code>命令查看效果</p>
+<p><img src="/images/LogiQL-c4-1.png" alt></p>
+<p>可以使用多行的命令插入</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">exec &apos;+cost[&quot;Fruit Sundae&quot;] = 120.</span><br><span class="line">+cost[&quot;Mango Sorbet&quot;] = 40.</span><br><span class="line">+cost[&quot;Cone Chocolate&quot;] = 50.</span><br><span class="line">+cost[&quot;Cone Vanilla&quot;] = 44.</span><br><span class="line">+cost[&quot;Cone Chili Fries&quot;] = 200.&apos;</span><br></pre></td></tr></table></figure>
+<p>更新数据</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">exec &apos;^cost[&quot;Popsicle Lemon&quot;] = 25.&apos;</span><br></pre></td></tr></table></figure>
+<p>移除数据</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">exec &apos;-cost[&quot;Cone Chili Fries&quot;] = 200.&apos;</span><br></pre></td></tr></table></figure>
+<p><img src="/images/LogiQL-c4-2.png" alt></p>
+<h1 id="更多的谓词：-价格和销售量"><a href="#更多的谓词：-价格和销售量" class="headerlink" title="更多的谓词： 价格和销售量"></a>更多的谓词： 价格和销售量</h1><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">addblock &apos;price[icecream] = p -&gt;</span><br><span class="line">   string(icecream), int(p).</span><br><span class="line">  </span><br><span class="line">week_sales[icecream, week] = value -&gt;</span><br><span class="line">  string(icecream),</span><br><span class="line">  int(week),</span><br><span class="line">  int(value).&apos;</span><br></pre></td></tr></table></figure>
+<p>您会注意到<code>week_sales</code>谓词有两个关键参数而不是一个：一个用于冰淇淋类型，另一个用于本周。 您可以将其视为二维地图。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line">exec &apos;+price[&quot;Popsicle Lemon&quot;] = 50.</span><br><span class="line">+price[&quot;Fruit Sundae&quot;] = 200.</span><br><span class="line">+price[&quot;Mango Sorbet&quot;] = 70.</span><br><span class="line">+price[&quot;Cone Chocolate&quot;] = 80.</span><br><span class="line">+price[&quot;Cone Vanilla&quot;] = 70.</span><br><span class="line"></span><br><span class="line">+week_sales[&quot;Popsicle Lemon&quot;, 1] = 122.</span><br><span class="line">+week_sales[&quot;Fruit Sundae&quot;, 1] = 88.</span><br><span class="line">+week_sales[&quot;Mango Sorbet&quot;, 1] = 72.</span><br><span class="line">+week_sales[&quot;Cone Chocolate&quot;, 1] = 4.</span><br><span class="line">+week_sales[&quot;Cone Vanilla&quot;, 1] = 257.</span><br><span class="line"></span><br><span class="line">+week_sales[&quot;Popsicle Lemon&quot;, 2] = 112.</span><br><span class="line">+week_sales[&quot;Fruit Sundae&quot;, 2] = 60.</span><br><span class="line">+week_sales[&quot;Mango Sorbet&quot;, 2] = 44.</span><br><span class="line">+week_sales[&quot;Cone Chocolate&quot;, 2] = 9.</span><br><span class="line">+week_sales[&quot;Cone Vanilla&quot;, 2] = 200.&apos;</span><br></pre></td></tr></table></figure>
+<p><img src="/images/LogiQL-c5.png" alt></p>
+<h1 id="使用规则推理新的事实"><a href="#使用规则推理新的事实" class="headerlink" title="使用规则推理新的事实"></a>使用规则推理新的事实</h1><p>到目前为止，我们一直在使用LogicBlox作为一个键值存储。 现在让我们首先看看如何使用LogicBlox自动计算收入和利润。</p>
+<p>首先我们使用规则(<code>rule</code>)定义一个<code>week_revenue</code>谓词，可以写为</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">addblock &apos;week_revenue[icecream, week] =</span><br><span class="line">  price[icecream] * week_sales[icecream, week].&apos;</span><br></pre></td></tr></table></figure>
+<p>可以使用<code>print week_revenue</code>查看结果</p>
+<p>同理可以定义<code>profit</code>和<code>week_profit</code></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">addblock &apos;profit[icecream] =</span><br><span class="line">  price[icecream] - cost[icecream].</span><br><span class="line">  </span><br><span class="line">week_profit[icecream, week] =</span><br><span class="line">  profit[icecream] * week_sales[icecream, week].&apos;</span><br></pre></td></tr></table></figure>
+<h1 id="聚合操作"><a href="#聚合操作" class="headerlink" title="聚合操作"></a>聚合操作</h1><p>现在如果我们希望看到我们每周的收入和利润汇总，为此，我们可以使用LogiQL的聚合功能。 你可以使用各种聚合函数，在我们的例子中我们将使用<code>total()</code>来进行求和：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">addblock &apos;agg_profit[week] = value &lt;-</span><br><span class="line">   agg&lt;&lt;value=total(p)&gt;&gt; week_profit[_, week] = p.</span><br><span class="line"> </span><br><span class="line">agg_revenue[week] = value &lt;-</span><br><span class="line">   agg&lt;&lt;value=total(r)&gt;&gt; week_revenue[_, week] = r.&apos;</span><br></pre></td></tr></table></figure>
+<p><code>agg_profit</code>规则表示的是将对于<code>profit</code>的数据里<code>week</code>值是我们要聚合的值的所有<code>p</code>值的和绑定到<code>value</code>，忽略ice cream的类型，（<code>_</code>为通配符），<code>agg_revenue</code>同理。</p>
+<p><img src="/images/LogiQL-c7.png" alt></p>
+<p>同理，我们可以统计冰淇淋的类型数量，我们可以定义一个规则统计<code>price</code>谓词里的数据项数量</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">addblock &apos;icecream_count[] = value &lt;-</span><br><span class="line">   agg&lt;&lt;value=count()&gt;&gt; price[_] = _.&apos;</span><br></pre></td></tr></table></figure>
+<p><img src="/images/LogiQL-c7-1.png" alt></p>
+<h1 id="查询事实-facts"><a href="#查询事实-facts" class="headerlink" title="查询事实(facts)"></a>查询事实(facts)</h1><p>我们之前定义的<code>icecream_count</code>谓词实际上更像是一次性样式查询。 在工作区中不断跟踪此值可能不是很有用。 相反，我们可以为这样的一次性查询做的是使用<code>query</code>命令。 以前我们使用<code>print</code>命令来查看谓词的值。 <code>print</code>是查询的一个非常基本的命令，但我们可以使用<code>query</code>命令执行更高级的查询。</p>
+<p>从REPL查询<code>facts</code>的方法是通过定义一个谓词<code>_</code>来填充我们感兴趣的事实。通常我们通过将其定义为规则来做到这一点。 例如，要获得与<code>print week_sales</code>命令相同的结果，我们将使用以下LogiQL规则定义：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">_(icecream, week, value) &lt;-</span><br><span class="line">  week_sales[icecream, week] = value.</span><br></pre></td></tr></table></figure>
+<p>您可能会注意到，在此规则中，我们使用略有不同的语法。 我们使用<code>predicate(k1，k2，k3)</code>，而不是使用函数谓词语法<code>predicate[k1，k2] = v</code>。 原因是我们只对<code>facts</code>数据项感兴趣。</p>
+<p>上面提到了，查询语句使用<code>query</code>命令</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">query &apos;_(icecream, week, value) &lt;-</span><br><span class="line">  week_sales[icecream, week] = value.&apos;</span><br></pre></td></tr></table></figure>
+<p><img src="/images/LogiQL-c8.png" alt></p>
+<h1 id="约束"><a href="#约束" class="headerlink" title="约束"></a>约束</h1><p>让我们做一些奇怪的事情吧，让我们把柠檬冰棒的价格降低到成本价格以下：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">exec &apos;^price[&quot;Popsicle Lemon&quot;] = 20.&apos;</span><br></pre></td></tr></table></figure>
+<p>现在我们对柠檬冰棒的利润率是负的，我们可以通过以下查询看到：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">query &apos;_(profit) &lt;- profit[&quot;Popsicle Lemon&quot;] = profit.&apos;</span><br></pre></td></tr></table></figure>
+<p>虽然这可能是某种商业策略，但我们假设我们不像微软那样以低成本销售Xbox以获得市场份额。让我们强制执行我们的利润率永远不会低于0。为此，我们制定以下约束：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">profit[_] = value -&gt; value &gt;= 0.</span><br></pre></td></tr></table></figure>
+<p>这个约束表明，对于利润谓词中的每个事实，值应为0或更多。立即添加此约束并观察它是否失败：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">addblock &apos;profit[_] = value -&gt; value &gt;= 0.&apos;</span><br></pre></td></tr></table></figure>
+<p>这失败了！为什么？给出的理由是，现在利润谓词中存在一个事实，它当前并不认为它的值大于或等于0.当然，这是事实。 在添加新约束之前，我们必须解决此问题。 LogicBlox不允许工作空间处于并非所有约束都成立的状态。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">exec &apos;^price[&quot;Popsicle Lemon&quot;] = 40.&apos;</span><br><span class="line">addblock &apos;profit[_] = value -&gt; value &gt;= 0.&apos;</span><br></pre></td></tr></table></figure>
+<p>幸运的是，这次我们成功了。</p>
+<p>现在，让我们看看如果我们再次将价格更新到低于成本的价格会发生什么：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">exec &apos;^price[&quot;Popsicle Lemon&quot;] = 10.&apos;</span><br></pre></td></tr></table></figure>
+<p>同样，我们得到一个错误，一个约束失败，这确实是我们所期望的。 任何导致不满足约束的更新都将自动回滚，这是LogicBlox事务性质的一部分。</p>
+<h1 id="Next"><a href="#Next" class="headerlink" title="Next"></a>Next</h1><p>可以到<a href="http://developer.logicblox.com/" target="_blank" rel="noopener">LogicBlox Developer</a>网站学习更多关于LogicBlox和LogiQL语言的知识。</p>
+
+      
+    </div>
+
+    
+
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/LogiQL/" rel="tag"># LogiQL</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2019/04/21/reading7/" rel="next" title="100天阅读计划 -- 7">
+                <i class="fa fa-chevron-left"></i> 100天阅读计划 -- 7
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2019/04/23/reading8/" rel="prev" title="100天阅读计划 -- 8">
+                100天阅读计划 -- 8 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+  </div>
+
+
+          </div>
+          
+
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            Table of Contents
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            Overview
+          </li>
+        </ul>
+      
+
+      <section class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <img class="site-author-image" itemprop="image" src="https://avatars2.githubusercontent.com/u/22347608?s=460&v=4" alt="D. HT. Y.">
+            
+              <p class="site-author-name" itemprop="name">D. HT. Y.</p>
+              <p class="site-description motion-element" itemprop="description"></p>
+          </div>
+
+          
+            <nav class="site-state motion-element">
+              
+                <div class="site-state-item site-state-posts">
+                
+                  <a href="/archives/">
+                
+                    <span class="site-state-item-count">29</span>
+                    <span class="site-state-item-name">posts</span>
+                  </a>
+                </div>
+              
+
+              
+
+              
+                
+                
+                <div class="site-state-item site-state-tags">
+                  
+                    
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                    <span class="site-state-item-count">26</span>
+                    <span class="site-state-item-name">tags</span>
+                  
+                </div>
+              
+            </nav>
+          
+
+          
+
+          
+
+          
+          
+
+          
+          
+
+          
+            
+          
+          
+
+        </div>
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#开始"><span class="nav-number">1.</span> <span class="nav-text">开始</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#弗雷德的奥德冰淇淋店"><span class="nav-number">2.</span> <span class="nav-text">弗雷德的奥德冰淇淋店</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#记录成本、价格和销售额"><span class="nav-number">3.</span> <span class="nav-text">记录成本、价格和销售额</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#处理事实-facts"><span class="nav-number">4.</span> <span class="nav-text">处理事实(facts)</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#更多的谓词：-价格和销售量"><span class="nav-number">5.</span> <span class="nav-text">更多的谓词： 价格和销售量</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#使用规则推理新的事实"><span class="nav-number">6.</span> <span class="nav-text">使用规则推理新的事实</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#聚合操作"><span class="nav-number">7.</span> <span class="nav-text">聚合操作</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#查询事实-facts"><span class="nav-number">8.</span> <span class="nav-text">查询事实(facts)</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#约束"><span class="nav-number">9.</span> <span class="nav-text">约束</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Next"><span class="nav-number">10.</span> <span class="nav-text">Next</span></a></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; <span itemprop="copyrightYear">2019</span>
+  <span class="with-love" id="animate">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">D. HT. Y.</span>
+
+  
+
+  
+</div>
+
+
+  
+
+
+
+  <div class="powered-by">Powered by <a class="theme-link" target="_blank" rel="external nofollow" href="https://hexo.io">Hexo</a> v3.8.0</div>
+
+
+
+  <span class="post-meta-divider">|</span>
+
+
+
+  <div class="theme-info">Theme – <a class="theme-link" target="_blank" rel="external nofollow" href="https://theme-next.org">NexT.Pisces</a> v6.4.2</div>
+
+
+
+
+        
+
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+    
+	
+    
+
+    
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=6.4.2"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=6.4.2"></script>
+
+
+
+  
+  
+
+
+  <script type="text/javascript" src="/js/src/affix.js?v=6.4.2"></script>
+
+  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=6.4.2"></script>
+
+
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=6.4.2"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=6.4.2"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=6.4.2"></script>
+
+
+
+  
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+  
+
+  
+  
+
+  
+    
+      <script type="text/x-mathjax-config">
+    MathJax.Hub.Config({
+      tex2jax: {
+        inlineMath: [ ['$','$'], ["\\(","\\)"]  ],
+        processEscapes: true,
+        skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+      },
+      TeX: {equationNumbers: { autoNumber: "AMS" }}
+    });
+</script>
+
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Queue(function() {
+      var all = MathJax.Hub.getAllJax(), i;
+        for (i=0; i < all.length; i += 1) {
+          all[i].SourceElement().parentNode.className += ' has-jax';
+        }
+    });
+</script>
+<script type="text/javascript" src="//cdn.jsdelivr.net/npm/mathjax@2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+
+    
+  
+
+
+  
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+<script src="/live2dw/lib/L2Dwidget.min.js?094cbace49a39548bed64abff5988b05"></script><script>L2Dwidget.init({"pluginRootPath":"live2dw/","pluginJsPath":"lib/","pluginModelPath":"assets/","tagMode":false,"debug":false,"model":{"jsonPath":"/live2dw/assets/xiaoban.model.json"},"display":{"position":"left","width":180,"height":300},"mobile":{"show":true},"react":{"opacity":0.9},"log":false});</script></body>
+</html>
