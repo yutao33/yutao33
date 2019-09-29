@@ -38,3 +38,5 @@ bcdboot E:\Windows /s X: /f UEFI
 
 参考
 * https://bbs.luobotou.org/forum.php?mod=viewthread&tid=14042&fromuid=1
+
+另外可以参考使用WinToUSB工具
