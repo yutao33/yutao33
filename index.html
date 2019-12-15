@@ -277,6 +277,163 @@
   
   
   <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="https://yutao33.github.io/2019/12/15/gossip/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="D. HT. Y.">
+      <meta itemprop="description" content>
+      <meta itemprop="image" content="https://avatars2.githubusercontent.com/u/22347608?s=460&v=4">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Github Pages of D. HT. Y.">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h2 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2019/12/15/gossip/" itemprop="url">
+                  Gossip协议
+                </a>
+              
+            
+          </h2>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+
+            
+            
+            
+
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+
+              
+                
+              
+
+              <time title="Created: 2019-12-15 15:32:40 / Modified: 15:33:59" itemprop="dateCreated datePublished" datetime="2019-12-15T15:32:40+08:00">2019-12-15</time>
+            
+
+            
+              
+
+              
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          <p>转载： <a href="http://kaiyuan.me/2015/07/08/Gossip/" target="_blank" rel="noopener">http://kaiyuan.me/2015/07/08/Gossip/</a></p>
+<p>Gossip是分布式系统中被广泛使用的协议，其主要用于实现分布式节点或者进程之间的信息交换。Gossip协议同时满足应用层多播协议所要求的低负载，高可靠和可扩展性的要求。由于其简单而易于实现，当前很多系统（例如Amazon S3，Usenet NNTP等）选择基于Gossip协议以实现应用层多播的功能。</p>
+<h2 id="什么是Gossip协议"><a href="#什么是Gossip协议" class="headerlink" title="什么是Gossip协议"></a>什么是Gossip协议</h2><p>Gossip Protocol利用一种随机的方式将信息散播到整个网络中。正如Gossip本身的含义一样，Gossip协议的工作流程即类似于绯闻的传播，或者流行病的传播。具体而言Gossip Protocol可以分为Push-based和Pull-based两种。Push-based Gossip Protocol的具体工作流程如下：</p>
+<ol>
+<li>网络中的某个节点随机的选择其他$b$个节点作为传输对象。</li>
+<li>该节点向其选中的$b$个节点传输相应的信息</li>
+<li>接收到信息的节点重复完成相同的工作</li>
+</ol>
+<p>Pull-based Gossip Protol的协议过程刚好相反：</p>
+<ol>
+<li>某个节点$v$随机的选择$b$个节点询问有没有最新的信息</li>
+<li>收到请求的节点回复节点$v$其最近未收到的信息</li>
+</ol>
+<p>当然，为了提高Gossip协议的性能，还有基于Push-Pull的混合协议。同时需要注意的是Gossip协议并不对网络的质量做出任何要求，也不需要loss-free的网络协议。Gossip协议一般基于UDP实现，其自身即在应用层保证了协议的robustness。</p>
+          <!--noindex-->
+          <div class="post-button text-center">
+            <a class="btn" href="/2019/12/15/gossip/#more" rel="contents">
+              Read more &raquo;
+            </a>
+          </div>
+          <!--/noindex-->
+        
+      
+    </div>
+
+    
+
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
     <link itemprop="mainEntityOfPage" href="https://yutao33.github.io/2019/09/29/wintousb/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -1659,174 +1816,11 @@ AbstractIntroductionIn this paper, we propose Mesos, a thin resource sharing
 
 
     
-      
-
-  
-
-  
-  
-  
-
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="https://yutao33.github.io/2019/05/15/reading10/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="D. HT. Y.">
-      <meta itemprop="description" content>
-      <meta itemprop="image" content="https://avatars2.githubusercontent.com/u/22347608?s=460&v=4">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Github Pages of D. HT. Y.">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h2 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2019/05/15/reading10/" itemprop="url">
-                  100天阅读计划 -- 10
-                </a>
-              
-            
-          </h2>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-
-            
-            
-            
-
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">Posted on</span>
-              
-
-              
-                
-              
-
-              <time title="Created: 2019-05-15 10:54:00 / Modified: 16:52:32" itemprop="dateCreated datePublished" datetime="2019-05-15T10:54:00+08:00">2019-05-15</time>
-            
-
-            
-              
-
-              
-            
-          </span>
-
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-          
-
-
-start
-end
-
-
-
-
-11:00
--
-
-
-
-
-Distributed Network Monitoring and Debugging with SwitchPointer (NSDI18)
-
-AbstractThe key contribution of SwitchPointer i
-          ...
-          <!--noindex-->
-          <div class="post-button text-center">
-            <a class="btn" href="/2019/05/15/reading10/#more" rel="contents">
-              Read more &raquo;
-            </a>
-          </div>
-          <!--/noindex-->
-        
-      
-    </div>
-
-    
-
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
   </section>
 
   
   <nav class="pagination">
-    <span class="page-number current">1</span><a class="page-number" href="/page/2/">2</a><a class="page-number" href="/page/3/">3</a><a class="extend next" rel="next" href="/page/2/"><i class="fa fa-angle-right" aria-label="Next page"></i></a>
+    <span class="page-number current">1</span><a class="page-number" href="/page/2/">2</a><span class="space">&hellip;</span><a class="page-number" href="/page/4/">4</a><a class="extend next" rel="next" href="/page/2/"><i class="fa fa-angle-right" aria-label="Next page"></i></a>
   </nav>
 
 
@@ -1871,7 +1865,7 @@ AbstractThe key contribution of SwitchPointer i
                 
                   <a href="/archives/">
                 
-                    <span class="site-state-item-count">30</span>
+                    <span class="site-state-item-count">31</span>
                     <span class="site-state-item-name">posts</span>
                   </a>
                 </div>
@@ -1938,7 +1932,11 @@ AbstractThe key contribution of SwitchPointer i
                     
                       
                     
-                    <span class="site-state-item-count">26</span>
+                      
+                    
+                      
+                    
+                    <span class="site-state-item-count">28</span>
                     <span class="site-state-item-name">tags</span>
                   
                 </div>
@@ -2145,11 +2143,11 @@ AbstractThe key contribution of SwitchPointer i
   
     
       
-    
-      
-    
-      
         
+      
+    
+      
+    
       
     
       
